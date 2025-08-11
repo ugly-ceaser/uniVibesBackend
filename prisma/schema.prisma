@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  GUEST
+  ADMIN
+}
+
+enum contentType{
+  GuideItem
+  Answer
+  Comment
+}
+
+enum Status{
+  Reported
+  Investigated
+  Block
+  Cleared
+}
+
+model User {
+  id              String     @id @default(uuid())
+  email           String     @unique
+  password        String
+  role            Role       @default(GUEST)
+  regNumber       String?    @unique
+  department      String?
+  faculty         String?
+  level           Int?
+  verificationStatus Boolean? @default(false)
+  status          Status @default(Cleared)
+  createdAt       DateTime   @default(now())
+
+  // Relations
+  questions       Question[]
+  answers         Answer[]
+  comments        Comment[]
+  forum           Forum[]
+  likes           Likes[]
+}
+
+model Course {
+  id          String   @id @default(uuid())
+  name        String
+  code        String
+  level       String
+  coordinator String
+  outline     String?
+  unitLoad    Int
+  semester    Int
+  createdAt   DateTime @default(now())
+}
+
+model MapLocation {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+  createdAt   DateTime @default(now())
+}
+
+model Forum{
+  id                    String    @id @default(uuid())
+  name                  String    @unique
+  creator               User?     @relation(fields:[creatorId], references:[id])
+  verificationStatus    Boolean? @default(false)
+  creatorId             String? 
+  createdAt             DateTime @default(now())
+  visibiltyStatus       Boolean  @default(false)
+
+  // Relations
+  questions    Question[]
+
+}
+
+model Question {
+  id        String   @id @default(uuid())
+  title     String
+  body      String
+  forum     Forum?   @relation(fields:[forumId], references: [id])
+  forumId   String?
+  author    User?    @relation(fields: [authorId], references: [id])
+  status    Status @default(Cleared)
+  authorId  String?
+  answers   Answer[]
+  createdAt DateTime @default(now())
+}
+
+
+
+model Answer {
+  id            String     @id @default(uuid())
+  body          String
+  author        User?      @relation(fields: [authorId], references: [id])
+  authorId      String?
+  question      Question   @relation(fields: [questionId], references: [id])
+  questionId    String
+  status        Status @default(Cleared)
+  createdAt     DateTime   @default(now())
+  comments      Comment[]  @relation("AnswerComments")
+  commentsCount Int        @default(0) // denormalized for fast count display
+
+  @@index([questionId])
+}
+
+model Comment {
+  id         String     @id @default(uuid())
+  body       String
+  author     User?      @relation(fields: [authorId], references: [id])
+  authorId   String?
+  answer     Answer?    @relation("AnswerComments", fields: [answerId], references: [id])
+  answerId   String?
+  parent     Comment?   @relation("CommentReplies", fields: [parentId], references: [id])
+  parentId   String?
+  status     Status @default(Cleared)
+  replies    Comment[]  @relation("CommentReplies")
+  replyCount Int        @default(0) // denormalized replies count
+  createdAt  DateTime   @default(now())
+
+  @@index([answerId])
+  @@index([parentId])
+  @@index([createdAt])
+}
+
+model GuideItem {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  status      Status @default(Cleared)
+  likesCount  Int      @default(0) // denormalized for fast likes display
+  createdAt   DateTime @default(now())
+}
+
+model Likes{
+  id                String  @id @default(uuid())
+  contentType       contentType
+  user              User?   @relation(fields:[userId], references:[id])
+  userId            String?
+}

@@ -1,0 +1,52 @@
+{
+  "info": {
+    "name": "APP NAME API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        { "name": "Register", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "url": "{{baseUrl}}/api/v1/auth/register", "body": {"mode":"raw","raw":"{\n  \"email\": \"user@example.com\",\n  \"password\": \"secret\",\n  \"role\": \"student\"\n}"} } },
+        { "name": "Login", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "url": "{{baseUrl}}/api/v1/auth/login", "body": {"mode":"raw","raw":"{\n  \"email\": \"user@example.com\",\n  \"password\": \"secret\"\n}"} } }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        { "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/courses" } },
+        { "name": "Get by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/courses/{{id}}" } }
+      ]
+    },
+    {
+      "name": "Map",
+      "item": [
+        { "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/map" } },
+        { "name": "Get by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/map/{{id}}" } }
+      ]
+    },
+    {
+      "name": "Forum",
+      "item": [
+        { "name": "List questions", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/forum/questions" } },
+        { "name": "Add question", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer {{token}}"}], "url": "{{baseUrl}}/api/v1/forum/questions", "body": {"mode":"raw","raw":"{\n  \"title\": \"How to register?\",\n  \"body\": \"I need help...\"\n}"} } },
+        { "name": "Add answer", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer {{token}}"}], "url": "{{baseUrl}}/api/v1/forum/questions/{{id}}/answers", "body": {"mode":"raw","raw":"{\n  \"body\": \"Here is how...\"\n}"} } }
+      ]
+    },
+    {
+      "name": "Guide",
+      "item": [
+        { "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/guide" } },
+        { "name": "Get by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/guide/{{id}}" } }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "token", "value": "" }
+  ]
+} 

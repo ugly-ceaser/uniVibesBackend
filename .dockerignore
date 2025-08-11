@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+Dockerfile*
+**/.git
+**/.gitignore
+.git
+.gitignore
+dist
+coverage
+logs
+.env
+.env.*
+.prisma 
