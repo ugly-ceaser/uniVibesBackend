@@ -73,7 +73,11 @@ export const createGuideService = (prisma: PrismaClient) => {
         if (!user) throw new Error('User not found');
 
         const existingLike = await prisma.likes.findFirst({
-          where: { userId, contentType: contentType.GuideItem, contentId: guideId }
+          where: {
+            userId,
+            contentType: contentType.GuideItem,
+            contentId: guideId
+          }
         });
         if (existingLike) throw new Error('Guide item already liked by this user');
 
@@ -94,7 +98,11 @@ export const createGuideService = (prisma: PrismaClient) => {
           return { guideItem: updatedGuideItem, like };
         });
       } catch (error) {
-        if (error instanceof Error && ['Guide item not found', 'User not found', 'Guide item already liked by this user'].includes(error.message)) throw error;
+        if (
+          error instanceof Error &&
+          ['Guide item not found', 'User not found', 'Guide item already liked by this user'].includes(error.message)
+        )
+          throw error;
         throw new Error('Failed to like guide item');
       }
     },
@@ -105,7 +113,11 @@ export const createGuideService = (prisma: PrismaClient) => {
         if (!guideItem) throw new Error('Guide item not found');
 
         const existingLike = await prisma.likes.findFirst({
-          where: { userId, contentType: contentType.GuideItem, contentId: guideId }
+          where: {
+            userId,
+            contentType: contentType.GuideItem,
+            contentId: guideId
+          }
         });
         if (!existingLike) throw new Error('Guide item not liked by this user');
 
@@ -118,7 +130,11 @@ export const createGuideService = (prisma: PrismaClient) => {
           });
         });
       } catch (error) {
-        if (error instanceof Error && ['Guide item not found', 'Guide item not liked by this user'].includes(error.message)) throw error;
+        if (
+          error instanceof Error &&
+          ['Guide item not found', 'Guide item not liked by this user'].includes(error.message)
+        )
+          throw error;
         throw new Error('Failed to unlike guide item');
       }
     },

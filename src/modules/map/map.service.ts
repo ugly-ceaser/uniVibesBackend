@@ -120,6 +120,20 @@ export const createMapService = (prisma: PrismaClient) => {
       });
     },
 
+getByIdAdmin: async (id: string): Promise<LocationWithGoogleMaps | null> => {
+  try {
+    const item = await prisma.mapLocation.findUnique({
+      where: { id },
+    });
+    if (!item) return null;
+    return { ...item, googleMapsUrl: gmUrl(item.latitude, item.longitude) };
+  } catch {
+    throw new Error('Failed to fetch location for admin');
+  }
+},
+
+
+
     // Get pending (INACTIVE) locations
     getPendingLocations: async (): Promise<MapLocation[]> => {
       return prisma.mapLocation.findMany({

@@ -22,10 +22,11 @@ export type LikeGuideResponse = {
   like: {
     id: string;
     contentType: string;
+    contentId: string; // ✅ Added for schema consistency
     userId: string;
   };
 };
 
 export type LikesCountResponse = {
   likesCount: number;
-}; 
+};

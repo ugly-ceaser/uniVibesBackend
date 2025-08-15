@@ -150,4 +150,5 @@ model Likes{
   contentType       contentType
   user              User?   @relation(fields:[userId], references:[id])
   userId            String?
+  contentId        String
 }
