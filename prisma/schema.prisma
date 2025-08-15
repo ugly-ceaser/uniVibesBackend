@@ -26,6 +26,10 @@ enum Status{
   Cleared
 }
 
+enum LocationStatus {
+  ACTIVE
+  INACTIVE
+}
 model User {
   id              String     @id @default(uuid())
   email           String     @unique
@@ -65,6 +69,7 @@ model MapLocation {
   description String?
   latitude    Float
   longitude   Float
+  status      LocationStatus  @default(ACTIVE)
   createdAt   DateTime @default(now())
 }
 
