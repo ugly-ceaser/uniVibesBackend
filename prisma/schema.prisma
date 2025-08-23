@@ -31,25 +31,31 @@ enum LocationStatus {
   INACTIVE
 }
 model User {
-  id              String     @id @default(uuid())
-  email           String     @unique
-  password        String
-  role            Role       @default(GUEST)
-  regNumber       String?    @unique
-  department      String?
-  faculty         String?
-  level           Int?
-  verificationStatus Boolean? @default(false)
-  status          Status @default(Cleared)
-  createdAt       DateTime   @default(now())
+  id                  String     @id @default(uuid())
+  email               String     @unique
+  fullname            String
+  password            String
+  role                Role       @default(GUEST)
+  regNumber           String?    @unique
+  department          String?
+  faculty             String?
+  level               Int?
+  semester            String?
+  phone               String?
+  nin                 String?
+  avatarUrl           String?
+  verificationStatus  Boolean?   @default(false)
+  status              Status     @default(Cleared)
+  createdAt           DateTime   @default(now())
 
   // Relations
-  questions       Question[]
-  answers         Answer[]
-  comments        Comment[]
-  forum           Forum[]
-  likes           Likes[]
+  questions           Question[]
+  answers             Answer[]
+  comments            Comment[]
+  forum               Forum[]
+  likes               Likes[]
 }
+
 
 model Course {
   id          String   @id @default(uuid())

@@ -5,6 +5,7 @@ import { attachUserIfPresent, requireAuth,authorizeRoles } from '../../middlewar
 import { 
   listQuestions, 
   addQuestion, 
+  getQuestionById,
   addAnswer,
   fetchComments,
   postComment,
@@ -20,6 +21,11 @@ export const createForumRouter = (container: AwilixContainer) => {
     '/questions',
     createCacheMiddleware(redis, { ttlSeconds: 300 }),
     listQuestions
+  );
+  router.get(
+    '/questions/:id',
+    createCacheMiddleware(redis, { ttlSeconds: 300 }),
+    getQuestionById
   );
   router.post(
     '/questions',

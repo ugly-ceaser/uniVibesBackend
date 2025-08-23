@@ -236,3 +236,24 @@ export const getGuideItemLikesCount = asyncHandler(async (req: Request, res: Res
     throw error;
   }
 }); 
+
+// Seed sample guides for development/testing
+export const seedSampleGuides = asyncHandler(async (req: Request, res: Response) => {
+  const prisma = req.container?.cradle.prisma;
+  if (!prisma) {
+    throw new Error("Prisma client not found in request container");
+  }
+  
+  const service = createGuideService(prisma);
+  const clearExisting = req.query.clear === 'true';
+  
+  try {
+    const result = await service.seedSampleGuides(clearExisting);
+    res.status(200).json({ 
+      message: 'Sample guides seeded successfully',
+      data: result
+    });
+  } catch (error) {
+    throw error;
+  }
+});

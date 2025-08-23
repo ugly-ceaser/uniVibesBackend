@@ -8,9 +8,7 @@ import {
   createGuideItem, 
   updateGuideItem, 
   deleteGuideItem,
-  likeGuideItem,
-  unlikeGuideItem,
-  getGuideItemLikesCount
+  seedSampleGuides
 } from './guide.controller';
 
 export const createGuideRouter = (container: AwilixContainer) => {
@@ -20,16 +18,14 @@ export const createGuideRouter = (container: AwilixContainer) => {
   // Public routes (with caching)
   router.get('/', createCacheMiddleware(redis, { ttlSeconds: 300 }), listGuide);
   router.get('/:id', createCacheMiddleware(redis, { ttlSeconds: 300 }), getGuideItem);
-  router.get('/:id/likes/count', createCacheMiddleware(redis, { ttlSeconds: 60 }), getGuideItemLikesCount);
 
   // Protected routes (require authentication)
   router.post('/', requireAuth, createGuideItem);
   router.put('/:id', requireAuth, updateGuideItem);
   router.delete('/:id', requireAuth, authorizeRoles('ADMIN'), deleteGuideItem);
-  
-  // Likes functionality (require authentication)
-  router.post('/:id/like', requireAuth, likeGuideItem);
-  router.delete('/:id/like', requireAuth, unlikeGuideItem);
+
+  // Development/Testing routes (admin only)
+  router.post('/dev/seed', requireAuth, authorizeRoles('ADMIN'), seedSampleGuides);
 
   return router;
 }; 

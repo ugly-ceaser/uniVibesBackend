@@ -5,4 +5,6 @@ export const env = {
   redisUrl: process.env.REDIS_URL || 'redis://cache:6379',
   jwtSecret: process.env.JWT_SECRET || 'change_me',
   logLevel: process.env.LOG_LEVEL || 'info',
+  enableResponseLogging: process.env.ENABLE_RESPONSE_LOGGING === 'true' || process.env.NODE_ENV === 'development',
+  responseLogLevel: process.env.RESPONSE_LOG_LEVEL || 'detailed', // 'simple', 'detailed', 'none'
 }; 

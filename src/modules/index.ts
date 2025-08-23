@@ -6,6 +6,8 @@ import { createCoursesRouter } from './courses/courses.routes';
 import { createMapRouter } from './map/map.routes';
 import { createForumRouter } from './forum/forum.routes';
 import { createGuideRouter } from './guide/guide.routes';
+import { createProfileRouter } from './user/userProfile.route';
+import { createLikeRouter } from './like/like.routes';
 
 export const registerRoutes = (app: Application, container: AwilixContainer) => {
   const api = Router();
@@ -14,5 +16,7 @@ export const registerRoutes = (app: Application, container: AwilixContainer) => 
   api.use('/map', createMapRouter(container));
   api.use('/forum', createForumRouter(container));
   api.use('/guide', createGuideRouter(container));
+  api.use('/user/profile', createProfileRouter(container));
+  api.use('/likes', createLikeRouter(container));
   app.use(API_PREFIX, api);
 }; 

@@ -31,6 +31,35 @@ export const createForumService = (prisma: PrismaClient) => {
       };
     },
 
+    // Get a single question with all its answers
+    getQuestionWithAnswers: async (questionId: string) => {
+      return prisma.question.findUnique({
+        where: { id: questionId },
+        include: {
+          author: {
+            select: { id: true, fullname: true, email: true }
+          },
+          forum: {
+            select: { id: true, name: true }
+          },
+          answers: {
+            orderBy: { createdAt: 'asc' },
+            include: {
+              author: {
+                select: { id: true, fullname: true, email: true }
+              },
+              _count: {
+                select: { comments: true }
+              }
+            }
+          },
+          _count: {
+            select: { answers: true }
+          }
+        }
+      });
+    },
+
     // Create a question
     addQuestion: async (
       title: string,

@@ -12,6 +12,7 @@ if (!prisma) {
 
   const {
     email,
+    fullname,
     password,
     role,
     regNumber,
@@ -42,6 +43,7 @@ if (!prisma) {
 
   const result = await service.register({
     email,
+    fullname,
     password,
     role: role ? role.toLowerCase() : undefined, // normalizeRole expects lowercase
     regNumber,

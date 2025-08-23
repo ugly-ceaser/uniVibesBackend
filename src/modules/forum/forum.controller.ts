@@ -156,3 +156,26 @@ export const createForum = asyncHandler(async (req: Request, res: Response) => {
     throw err;
   }
 });
+
+// Get a single question with all its answers
+export const getQuestionById = asyncHandler(async (req: Request, res: Response) => {
+  const prisma = req.container?.cradle.prisma;
+  if (!prisma) {
+    throw new Error("Prisma client not found in request container");
+  }
+
+  const service = createForumService(prisma);
+  const questionId = req.params.id;
+
+  const question = await service.getQuestionWithAnswers(questionId);
+  
+  if (!question) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Question not found',
+      requestId: req.id,
+    });
+  }
+
+  res.status(200).json({ data: question });
+});

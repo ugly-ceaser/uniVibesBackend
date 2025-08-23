@@ -36,6 +36,7 @@ export const createAuthService = (prisma: PrismaClient) => {
         data: {
           email: input.email,
           password: hashedPassword,
+          fullname: input.fullname,
           role,
           regNumber: input.regNumber || null,
           department: input.department || null,
