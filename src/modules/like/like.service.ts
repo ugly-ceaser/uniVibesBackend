@@ -67,7 +67,7 @@ interface GuideWithLiker {
   userId: string;
   user: {
     id: string;
-    fullname: string;
+    fullname: string | null;
     email: string;
     avatarUrl: string | null;
   };

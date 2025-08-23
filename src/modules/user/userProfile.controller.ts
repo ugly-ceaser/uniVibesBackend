@@ -9,7 +9,17 @@ export const getUserProfile = asyncHandler(async (req: Request, res: Response) =
   if (!prisma) throw new Error('Prisma client not found');
 
   const service = createProfileService(prisma);
-  const user = await service.getProfile(req.user.id); // assuming req.user is set by requireAuth
+  const userId = (req as any).user?.id;
+  
+  if (!userId) {
+    return res.status(401).json({
+      status: 401,
+      message: 'Authentication required',
+      requestId: (req as any).id,
+    });
+  }
+
+  const user = await service.getProfile(userId);
 
   if (!user) {
     return res.status(404).json({ status: 404, message: 'User not found', requestId: (req as any).id });
@@ -25,7 +35,17 @@ export const updateUserProfile = asyncHandler(async (req: Request, res: Response
 
   const input = req.body as UpdateProfileInput;
   const service = createProfileService(prisma);
-  const updatedUser = await service.updateProfile(req.user.id, input);
+  const userId = (req as any).user?.id;
+  
+  if (!userId) {
+    return res.status(401).json({
+      status: 401,
+      message: 'Authentication required',
+      requestId: (req as any).id,
+    });
+  }
+
+  const updatedUser = await service.updateProfile(userId, input);
 
   res.status(200).json({ data: updatedUser, message: 'Profile updated successfully' });
 });
@@ -37,7 +57,17 @@ export const verifyProfileField = asyncHandler(async (req: Request, res: Respons
 
   const input = req.body as VerifyFieldInput;
   const service = createProfileService(prisma);
-  const updatedUser = await service.verifyField(req.user.id, input);
+  const userId = (req as any).user?.id;
+  
+  if (!userId) {
+    return res.status(401).json({
+      status: 401,
+      message: 'Authentication required',
+      requestId: (req as any).id,
+    });
+  }
+
+  const updatedUser = await service.verifyField(userId, input);
 
   res.status(200).json({ data: updatedUser, message: 'Field verification updated successfully' });
 });

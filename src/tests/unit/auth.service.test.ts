@@ -25,10 +25,21 @@ describe('AuthService', () => {
 
   it('registers a user', async () => {
     mockPrisma.user.findUnique.mockResolvedValue(null);
-    mockPrisma.user.create.mockResolvedValue({ id: 'u1', email: 'a@b.com', role: 'student', password: 'hashed-password' });
+    mockPrisma.user.create.mockResolvedValue({ 
+      id: 'u1', 
+      email: 'a@b.com', 
+      fullname: 'Test User',
+      role: 'student', 
+      password: 'hashed-password' 
+    });
 
     const service = createAuthService(mockPrisma);
-    const result = await service.register({ email: 'a@b.com', password: 'pw', role: 'student' });
+    const result = await service.register({ 
+      email: 'a@b.com', 
+      password: 'pw', 
+      fullname: 'Test User',
+      role: 'student' 
+    });
 
     expect(result.user.email).toBe('a@b.com');
     expect(result.token).toBe('fake-jwt-token');
