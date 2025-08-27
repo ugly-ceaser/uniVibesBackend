@@ -5,7 +5,7 @@ type CourseCreateInput = {
   code: string;
   level: string;
   coordinator: string;
-  outline?: string | null;
+  outline?: string[];
   unitLoad: number;
   semester: number;
   department:string; 
