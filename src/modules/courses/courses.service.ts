@@ -12,35 +12,30 @@ type CourseCreateInput = {
 
 export const createCoursesService = (prisma: PrismaClient) => {
   return {
-    list: async (filters?: {
-      level?: string;
-      semester?: number;
-      outline?: string;
-      name?: string;
-    }): Promise<Course[]> => {
-      const where: Prisma.CourseWhereInput = {};
+    list: async (
+      filters?: {
+        level?: string;
+        department?: string;
+      },
+      userLevel?: number,
+      userDepartment?: string
+    ): Promise<Course[]> => {
+      // Ensure both department and level are present and compared as strings
+      const department = (filters?.department ?? userDepartment ?? '').toString().trim();
+      const level = (filters?.level ?? (userLevel !== undefined ? String(userLevel) : '')).toString().trim();
 
-      if (filters?.level?.trim()) {
-        where.level = filters.level.trim();
-      }
-      if (typeof filters?.semester === 'number') {
-        where.semester = filters.semester;
-      }
-      if (filters?.outline?.trim()) {
-        where.outline = {
-          contains: filters.outline.trim(),
-          mode: 'insensitive',
-        };
-      }
-      if (filters?.name?.trim()) {
-        where.name = {
-          contains: filters.name.trim(),
-          mode: 'insensitive',
-        };
+      // Debug log for filter values
+      console.log('Course filter:', { department, level });
+
+      if (!department || !level) {
+        return [];
       }
 
       return prisma.course.findMany({
-        where,
+        where: {
+          department,
+          level,
+        },
         orderBy: { name: 'asc' },
       });
     },

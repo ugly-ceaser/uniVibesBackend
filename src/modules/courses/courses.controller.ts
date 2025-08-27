@@ -8,16 +8,19 @@ export const listCourses = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("Prisma client not found in request container");
   }
 
-  const filters = {
-    level: req.query.level as string | undefined,
-    semester: req.query.semester ? Number(req.query.semester) : undefined,
-    outline: req.query.outline as string | undefined,
-    name: req.query.name as string | undefined,
-  };
-
   const service = createCoursesService(prisma);
-  const data = await service.list(filters);
+  const userLevel = (req as any).user?.level as number | undefined;
+  const userDepartment = (req as any).user?.department as string | undefined;
 
+  console.log('User object:', (req as any).user);
+
+  // Only filter by user's department and level unless overridden by query
+  const filters: any = {};
+  if (req.query.level) filters.level = req.query.level as string;
+  if (req.query.department) filters.department = req.query.department as string;
+
+  // If no explicit filter, use user's department and level
+  const data = await service.list(filters, userLevel, userDepartment);
   res.status(200).json({ data });
 });
 

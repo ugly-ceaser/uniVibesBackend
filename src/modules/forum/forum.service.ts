@@ -6,21 +6,24 @@ export const createForumService = (prisma: PrismaClient) => {
     listQuestions: async (
       page: number = 1,
       pageSize: number = 20,
-      forumId?: string
+      forumId?: string,
+      category?: string
     ) => {
       const skip = (page - 1) * pageSize;
 
+      const where: any = {};
+      if (forumId) where.forumId = forumId;
+      if (category) where.category = category;
+
       const [questions, totalCount] = await Promise.all([
         prisma.question.findMany({
-          where: forumId ? { forumId } : undefined,
+          where,
           orderBy: { createdAt: 'desc' },
           skip,
           take: pageSize,
           include: { _count: { select: { answers: true } } }
         }),
-        prisma.question.count({
-          where: forumId ? { forumId } : undefined
-        })
+        prisma.question.count({ where })
       ]);
 
       return {

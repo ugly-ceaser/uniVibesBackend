@@ -30,6 +30,16 @@ enum LocationStatus {
   ACTIVE
   INACTIVE
 }
+
+// Forum post categories
+enum ForumCategory {
+  GENERAL_DISCUSSION
+  ACADEMIC_HELP
+  STUDENT_LIFE
+  CAREER_AND_INTERNSHIPS
+  TECH_AND_PROGRAMMING
+  CAMPUS_SERVICES
+}
 model User {
   id                  String     @id @default(uuid())
   email               String     @unique
@@ -63,9 +73,10 @@ model Course {
   code        String
   level       String
   coordinator String
-  outline     String?
+  outline     String[]
   unitLoad    Int
   semester    Int
+  department  String
   createdAt   DateTime @default(now())
 }
 
@@ -97,6 +108,7 @@ model Question {
   id        String   @id @default(uuid())
   title     String
   body      String
+  category  ForumCategory @default(GENERAL_DISCUSSION)
   forum     Forum?   @relation(fields:[forumId], references: [id])
   forumId   String?
   author    User?    @relation(fields: [authorId], references: [id])

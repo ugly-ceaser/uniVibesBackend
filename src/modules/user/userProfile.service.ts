@@ -18,24 +18,28 @@ export const createProfileService = (prisma: PrismaClient) => {
       });
     },
 
-    // Verify a specific field (email, phone, NIN, regNumber)
+    // Verify profile: your Prisma schema has a single boolean `verificationStatus` on User.
+    // We map any provided flags to that single boolean (true if any true and none false; false if any false).
     verifyField: async (userId: string, input: VerifyFieldInput): Promise<User> => {
-      const validFields: (keyof VerifyFieldInput)[] = ['email', 'phone', 'nin', 'regNumber'];
-      const updateData: Partial<Record<string, boolean>> = {};
+      const providedValues = Object.values(input).filter((v): v is boolean => typeof v === 'boolean');
 
-      validFields.forEach((field) => {
-        if (input[field] !== undefined) {
-          updateData[`verificationStatus.${field}`] = input[field];
-        }
-      });
+      if (providedValues.length === 0) {
+        throw new Error('No verification flag provided');
+      }
+
+      // If any flag is false, set overall status to false. Otherwise, set to true if any true exists.
+      const hasFalse = providedValues.some((v) => v === false);
+      const hasTrue = providedValues.some((v) => v === true);
+
+      const nextStatus = hasFalse ? false : hasTrue ? true : undefined;
+
+      if (typeof nextStatus !== 'boolean') {
+        throw new Error('Invalid verification flags');
+      }
 
       return prisma.user.update({
         where: { id: userId },
-        data: {
-          verificationStatus: {
-            ...updateData,
-          },
-        },
+        data: { verificationStatus: nextStatus },
       });
     },
   };

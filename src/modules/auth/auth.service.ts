@@ -47,7 +47,12 @@ export const createAuthService = (prisma: PrismaClient) => {
       });
 
       // Generate JWT
-      const token = signJwt({ userId: user.id, role: user.role });
+      const token = signJwt({ 
+        userId: user.id, 
+        role: user.role,
+        department: user.department,
+        level: user.level,
+      });
 
       return {
         user: {
@@ -76,7 +81,12 @@ export const createAuthService = (prisma: PrismaClient) => {
       if (!validPassword) throw new Error("Invalid credentials");
 
       // Generate token
-      const token = signJwt({ userId: user.id, role: user.role });
+      const token = signJwt({ 
+        userId: user.id, 
+        role: user.role,
+        department: user.department,
+        level: user.level,
+      });
 
       return {
         user: {

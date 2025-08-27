@@ -15,8 +15,9 @@ export const listQuestions = asyncHandler(async (req: Request, res: Response) =>
   const page = parseInt(req.query.page as string) || 1;
   const pageSize = parseInt(req.query.pageSize as string) || 20;
   const forumId = req.query.forumId as string | undefined;
+  const category = req.query.category as string | undefined;
 
-  const data = await service.listQuestions(page, pageSize, forumId);
+  const data = await service.listQuestions(page, pageSize, forumId, category);
   res.status(200).json({ data });
 });
 

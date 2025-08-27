@@ -14,7 +14,8 @@ export const createCoursesRouter = (container: AwilixContainer) => {
    */
   const cacheKeyBuilder = (req: any) => {
     const queryString = new URLSearchParams(req.query).toString();
-    return `courses:${queryString || 'all'}`;
+    const userLevel = (req as any).user?.level ?? 'anon';
+    return `courses:l=${userLevel}:${queryString || 'all'}`;
   };
 
   // Admin-only route to create a course
@@ -29,10 +30,10 @@ export const createCoursesRouter = (container: AwilixContainer) => {
   // Public route with caching & query-based filters
   router.get(
     '/',
-    createCacheMiddleware(redis, { ttlSeconds: 300 }),
     attachUserIfPresent,
     requireAuth,
     authorizeRoles('ADMIN', 'STUDENT'),
+    createCacheMiddleware(redis, { ttlSeconds: 300, key: cacheKeyBuilder }),
     listCourses
   );
 

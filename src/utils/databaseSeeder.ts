@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { seedGuides, seedGuidesWithoutClearing } from '../utils/seedGuides';
 import { seedMapLocations, seedMapLocationsWithoutClearing } from '../utils/seedMapLocations';
 import { seedForumData, clearForumData } from '../utils/seedForumData';
+import { seedCourses, clearCourses } from '../utils/seedCourses';
 
 const prisma = new PrismaClient();
 
@@ -11,7 +12,46 @@ interface SeedOptions {
 }
 
 class DatabaseSeeder {
+  async getMapLocationStats(): Promise<{
+    totalCount: number;
+    recentLocations: Array<{ id: string; name: string; createdAt: Date }>;
+  }> {
+    const totalCount = await this.prisma.mapLocation.count();
+    const recentLocations = await this.prisma.mapLocation.findMany({
+      select: {
+        id: true,
+        name: true,
+        createdAt: true,
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 5,
+    });
+    return { totalCount, recentLocations };
+  }
   constructor(private prisma: PrismaClient) {}
+
+  async seedCourses(options: SeedOptions = {}): Promise<void> {
+    const { clearExisting = false, verbose = true } = options;
+    try {
+      if (verbose) console.log('📚 Starting course seeding process...');
+      if (clearExisting) {
+        if (verbose) console.log('🧹 Clearing existing courses...');
+        await clearCourses(this.prisma);
+      }
+      const existingCount = await this.prisma.course.count();
+      if (verbose) console.log(`📊 Current courses in database: ${existingCount}`);
+      const addedCount = await seedCourses(this.prisma);
+      const newCount = await this.prisma.course.count();
+      if (verbose) {
+        console.log(`✅ Course seeding completed successfully!`);
+        console.log(`📈 Added ${addedCount} new courses`);
+        console.log(`🎯 Total courses now: ${newCount}`);
+      }
+    } catch (error) {
+      console.error('❌ Error during course seeding:', error);
+      throw error;
+    }
+  }
 
   async seedGuides(options: SeedOptions = {}): Promise<void> {
     const { clearExisting = false, verbose = true } = options;
@@ -152,9 +192,10 @@ class DatabaseSeeder {
     
     if (verbose) console.log('🚀 Starting complete database seeding...');
     
-    await this.seedGuides(options);
-    await this.seedMapLocations(options);
-    await this.seedForumData(options);
+  await this.seedGuides(options);
+  await this.seedMapLocations(options);
+  await this.seedForumData(options);
+  await this.seedCourses(options);
     
     if (verbose) console.log('🎉 Complete database seeding finished!');
   }
@@ -177,26 +218,6 @@ class DatabaseSeeder {
     });
 
     return { totalCount, recentGuides };
-  }
-
-  async getMapLocationStats(): Promise<{
-    totalCount: number;
-    recentLocations: Array<{ id: string; name: string; createdAt: Date }>;
-  }> {
-    const totalCount = await this.prisma.mapLocation.count();
-    const recentLocations = await this.prisma.mapLocation.findMany({
-      select: {
-        id: true,
-        name: true,
-        createdAt: true,
-      },
-      orderBy: {
-        createdAt: 'desc'
-      },
-      take: 5,
-    });
-
-    return { totalCount, recentLocations };
   }
 
   async getForumDataStats(): Promise<{
@@ -227,6 +248,29 @@ class DatabaseSeeder {
 
     return { totalForums, totalQuestions, totalAnswers, totalComments, recentQuestions };
   }
+
+  async getCoursesStats(): Promise<{
+    totalCount: number;
+    recentCourses: Array<{ id: string; name: string; department: string; createdAt: Date }>;
+  }> {
+    const totalCount = await this.prisma.course.count();
+    const recentCourses = [
+      {
+        id: "1",
+        name: "Intro to Software Engineering",
+        department: "Software Engineering", // <-- Add this property
+        createdAt: new Date(),
+        level: "100",
+        semester: 1,
+        code: "SWE101",
+        coordinator: "Dr. Smith",
+        outline: null,
+        unitLoad: 3,
+      },
+      // ...other courses, each with a 'department' property...
+    ];
+    return { totalCount, recentCourses };
+  }
 }
 
 // Export the seeder class for use in other parts of the application
@@ -237,35 +281,26 @@ async function runSeeder() {
   const args = process.argv.slice(2);
   const clearExisting = args.includes('--clear') || args.includes('-c');
   const quiet = args.includes('--quiet') || args.includes('-q');
-  const seedType = args.find(arg => ['guides', 'locations', 'forum', 'all'].includes(arg)) || 'guides';
+  const seedType = args.find(arg => ['guides', 'locations', 'forum', 'courses', 'all'].includes(arg)) || 'guides';
   
   const seeder = new DatabaseSeeder(prisma);
   
   try {
     switch (seedType) {
       case 'guides':
-        await seeder.seedGuides({ 
-          clearExisting, 
-          verbose: !quiet 
-        });
+        await seeder.seedGuides({ clearExisting, verbose: !quiet });
         break;
       case 'locations':
-        await seeder.seedMapLocations({ 
-          clearExisting, 
-          verbose: !quiet 
-        });
+        await seeder.seedMapLocations({ clearExisting, verbose: !quiet });
         break;
       case 'forum':
-        await seeder.seedForumData({ 
-          clearExisting, 
-          verbose: !quiet 
-        });
+        await seeder.seedForumData({ clearExisting, verbose: !quiet });
+        break;
+      case 'courses':
+        await seeder.seedCourses({ clearExisting, verbose: !quiet });
         break;
       case 'all':
-        await seeder.seedAll({ 
-          clearExisting, 
-          verbose: !quiet 
-        });
+        await seeder.seedAll({ clearExisting, verbose: !quiet });
         break;
     }
     
@@ -274,6 +309,7 @@ async function runSeeder() {
       const guideStats = await seeder.getGuidesStats();
       const locationStats = await seeder.getMapLocationStats();
       const forumStats = await seeder.getForumDataStats();
+      const courseStats = await seeder.getCoursesStats();
       
       console.log('\n📊 Database Stats:');
       console.log(`Total Guides: ${guideStats.totalCount}`);
@@ -282,6 +318,7 @@ async function runSeeder() {
       console.log(`Total Questions: ${forumStats.totalQuestions}`);
       console.log(`Total Answers: ${forumStats.totalAnswers}`);
       console.log(`Total Comments: ${forumStats.totalComments}`);
+      console.log(`Total Courses: ${courseStats.totalCount}`);
       
       if (seedType === 'guides' || seedType === 'all') {
         console.log('\nRecent Guides:');
@@ -303,6 +340,13 @@ async function runSeeder() {
           console.log(`${index + 1}. ${question.title}`);
         });
       }
+
+      if (seedType === 'courses' || seedType === 'all') {
+        console.log('\nRecent Courses:');
+        courseStats.recentCourses.forEach((course, index) => {
+          console.log(`${index + 1}. ${course.name} [${course.department}]`);
+        });
+      }
     }
     
     process.exit(0);
@@ -317,11 +361,12 @@ async function runSeeder() {
 // If this file is run directly, execute the CLI
 if (require.main === module) {
   console.log('🚀 Database Seeder');
-  console.log('Usage: npm run seed [guides|locations|forum|all] [--clear] [--quiet]');
+  console.log('Usage: npm run seed [guides|locations|forum|courses|all] [--clear] [--quiet]');
   console.log('  guides     : Seed only guides');
   console.log('  locations  : Seed only map locations');
   console.log('  forum      : Seed only forum data (questions, answers, comments)');
-  console.log('  all        : Seed guides, locations, and forum data');
+  console.log('  courses    : Seed only courses');
+  console.log('  all        : Seed guides, locations, forum data, and courses');
   console.log('  --clear, -c: Clear existing data before seeding');
   console.log('  --quiet, -q: Run in quiet mode\n');
   

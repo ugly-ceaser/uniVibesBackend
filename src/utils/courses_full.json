@@ -1,0 +1,3962 @@
+[
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE101",
+    "level": "100",
+    "coordinator": "Dr. Software Adebayo",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE102",
+    "level": "100",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE103",
+    "level": "100",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE104",
+    "level": "100",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE105",
+    "level": "100",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE121",
+    "level": "100",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE122",
+    "level": "100",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE123",
+    "level": "100",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE124",
+    "level": "100",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE125",
+    "level": "100",
+    "coordinator": "Dr. Software Kamara",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE201",
+    "level": "200",
+    "coordinator": "Dr. Software Adebayo",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE202",
+    "level": "200",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE203",
+    "level": "200",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE204",
+    "level": "200",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE205",
+    "level": "200",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE221",
+    "level": "200",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE222",
+    "level": "200",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE223",
+    "level": "200",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE224",
+    "level": "200",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE225",
+    "level": "200",
+    "coordinator": "Dr. Software Kamara",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE301",
+    "level": "300",
+    "coordinator": "Dr. Software Adebayo",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE302",
+    "level": "300",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE303",
+    "level": "300",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE304",
+    "level": "300",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE305",
+    "level": "300",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE321",
+    "level": "300",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE322",
+    "level": "300",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE323",
+    "level": "300",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE324",
+    "level": "300",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE325",
+    "level": "300",
+    "coordinator": "Dr. Software Kamara",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE401",
+    "level": "400",
+    "coordinator": "Dr. Software Adebayo",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE402",
+    "level": "400",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE403",
+    "level": "400",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE404",
+    "level": "400",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE405",
+    "level": "400",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Introduction to Programming ",
+    "code": "SWE421",
+    "level": "400",
+    "coordinator": "Dr. Software Eze",
+    "outline": [
+      "Introduction to Programming Concepts",
+      "Algorithms and Flowcharts",
+      "Variables and Data Types",
+      "Control Structures",
+      "Functions and Procedures",
+      "Basic Debugging",
+      "Introduction to Software Tools"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Object-Oriented Programming ",
+    "code": "SWE422",
+    "level": "400",
+    "coordinator": "Dr. Software Olaoye",
+    "outline": [
+      "Introduction to OOP",
+      "Classes and Objects",
+      "Encapsulation and Data Hiding",
+      "Constructors and Destructors",
+      "Inheritance and Reusability",
+      "Polymorphism",
+      "Abstraction and Interfaces"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Software Engineering Principles ",
+    "code": "SWE423",
+    "level": "400",
+    "coordinator": "Dr. Software Mensah",
+    "outline": [
+      "Software Development Life Cycle",
+      "Agile vs Waterfall",
+      "Requirements Engineering",
+      "System Design Principles",
+      "Testing and Quality Assurance",
+      "Version Control Systems",
+      "Case Study Project"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Database Systems ",
+    "code": "SWE424",
+    "level": "400",
+    "coordinator": "Dr. Software Toure",
+    "outline": [
+      "Introduction to Databases",
+      "ER Modeling",
+      "SQL Basics",
+      "Normalization",
+      "Transactions and Concurrency",
+      "Database Security",
+      "Database Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Web Development Fundamentals ",
+    "code": "SWE425",
+    "level": "400",
+    "coordinator": "Dr. Software Kamara",
+    "outline": [
+      "Introduction to Web Development",
+      "HTML and CSS Basics",
+      "JavaScript Fundamentals",
+      "Front-End Frameworks",
+      "Backend Development Concepts",
+      "RESTful APIs",
+      "Mini Web Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Software Engineering"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS101",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Adebayo",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS102",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS103",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS104",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS105",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS121",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS122",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS123",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS124",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS125",
+    "level": "100",
+    "coordinator": "Dr. Cybersecurity Kamara",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS201",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Adebayo",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS202",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS203",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS204",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS205",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS221",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS222",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS223",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS224",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS225",
+    "level": "200",
+    "coordinator": "Dr. Cybersecurity Kamara",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS301",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Adebayo",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS302",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS303",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS304",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS305",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS321",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS322",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS323",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS324",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS325",
+    "level": "300",
+    "coordinator": "Dr. Cybersecurity Kamara",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS401",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Adebayo",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS402",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS403",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS404",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS405",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Foundations of Cybersecurity ",
+    "code": "CYS421",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Eze",
+    "outline": [
+      "Introduction to Cybersecurity",
+      "Threats and Vulnerabilities",
+      "CIA Triad",
+      "Network Security Basics",
+      "Malware Types",
+      "Introduction to Firewalls"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Applied Cryptography ",
+    "code": "CYS422",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Olaoye",
+    "outline": [
+      "Cryptography Fundamentals",
+      "Symmetric and Asymmetric Encryption",
+      "Hash Functions",
+      "Digital Signatures",
+      "PKI Concepts",
+      "Cryptanalysis Basics"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Risk Management and Security Policies ",
+    "code": "CYS423",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Mensah",
+    "outline": [
+      "Risk Management",
+      "Security Policies",
+      "User Authentication Methods",
+      "Access Control Models",
+      "Incident Response",
+      "Security Auditing"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Ethical Hacking and Penetration Testing ",
+    "code": "CYS424",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Toure",
+    "outline": [
+      "Penetration Testing Basics",
+      "Reconnaissance Techniques",
+      "Exploitation Tools",
+      "Post-Exploitation",
+      "Reporting Findings",
+      "Ethical Considerations"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Cyber Law and Digital Forensics ",
+    "code": "CYS425",
+    "level": "400",
+    "coordinator": "Dr. Cybersecurity Kamara",
+    "outline": [
+      "Cyber Law and Ethics",
+      "Data Privacy Regulations",
+      "Case Studies in Cybercrime",
+      "Introduction to Digital Forensics",
+      "Cybersecurity Careers",
+      "Emerging Threats"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Cybersecurity"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC101",
+    "level": "100",
+    "coordinator": "Dr. Data Adebayo",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC102",
+    "level": "100",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC103",
+    "level": "100",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC104",
+    "level": "100",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC105",
+    "level": "100",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC121",
+    "level": "100",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC122",
+    "level": "100",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC123",
+    "level": "100",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC124",
+    "level": "100",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC125",
+    "level": "100",
+    "coordinator": "Dr. Data Kamara",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC201",
+    "level": "200",
+    "coordinator": "Dr. Data Adebayo",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC202",
+    "level": "200",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC203",
+    "level": "200",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC204",
+    "level": "200",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC205",
+    "level": "200",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC221",
+    "level": "200",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC222",
+    "level": "200",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC223",
+    "level": "200",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC224",
+    "level": "200",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC225",
+    "level": "200",
+    "coordinator": "Dr. Data Kamara",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC301",
+    "level": "300",
+    "coordinator": "Dr. Data Adebayo",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC302",
+    "level": "300",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC303",
+    "level": "300",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC304",
+    "level": "300",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC305",
+    "level": "300",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC321",
+    "level": "300",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC322",
+    "level": "300",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC323",
+    "level": "300",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC324",
+    "level": "300",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC325",
+    "level": "300",
+    "coordinator": "Dr. Data Kamara",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC401",
+    "level": "400",
+    "coordinator": "Dr. Data Adebayo",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC402",
+    "level": "400",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC403",
+    "level": "400",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC404",
+    "level": "400",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC405",
+    "level": "400",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Data Science"
+  },
+  {
+    "name": "Introduction to Data Science ",
+    "code": "DSC421",
+    "level": "400",
+    "coordinator": "Dr. Data Eze",
+    "outline": [
+      "Introduction to Data Science",
+      "Data Collection Methods",
+      "Data Cleaning and Preprocessing",
+      "Exploratory Data Analysis",
+      "Data Ethics and Privacy"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Statistics for Data Science ",
+    "code": "DSC422",
+    "level": "400",
+    "coordinator": "Dr. Data Olaoye",
+    "outline": [
+      "Statistical Methods",
+      "Probability Distributions",
+      "Hypothesis Testing",
+      "Regression Analysis",
+      "Bayesian Inference"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Machine Learning Fundamentals ",
+    "code": "DSC423",
+    "level": "400",
+    "coordinator": "Dr. Data Mensah",
+    "outline": [
+      "Machine Learning Fundamentals",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation Metrics",
+      "Overfitting and Regularization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Data Visualization ",
+    "code": "DSC424",
+    "level": "400",
+    "coordinator": "Dr. Data Toure",
+    "outline": [
+      "Visualization Techniques",
+      "Matplotlib and Seaborn",
+      "Dashboard Design",
+      "Geospatial Visualization",
+      "Storytelling with Data"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "Big Data Analytics ",
+    "code": "DSC425",
+    "level": "400",
+    "coordinator": "Dr. Data Kamara",
+    "outline": [
+      "Big Data Concepts",
+      "Introduction to Hadoop",
+      "Spark for Data Processing",
+      "NoSQL Databases",
+      "Capstone Data Project"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Data Science"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT101",
+    "level": "100",
+    "coordinator": "Dr. Information Adebayo",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT102",
+    "level": "100",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT103",
+    "level": "100",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT104",
+    "level": "100",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT105",
+    "level": "100",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT121",
+    "level": "100",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT122",
+    "level": "100",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT123",
+    "level": "100",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT124",
+    "level": "100",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT125",
+    "level": "100",
+    "coordinator": "Dr. Information Kamara",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT201",
+    "level": "200",
+    "coordinator": "Dr. Information Adebayo",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT202",
+    "level": "200",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT203",
+    "level": "200",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT204",
+    "level": "200",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT205",
+    "level": "200",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT221",
+    "level": "200",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT222",
+    "level": "200",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT223",
+    "level": "200",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT224",
+    "level": "200",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT225",
+    "level": "200",
+    "coordinator": "Dr. Information Kamara",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT301",
+    "level": "300",
+    "coordinator": "Dr. Information Adebayo",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT302",
+    "level": "300",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT303",
+    "level": "300",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT304",
+    "level": "300",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT305",
+    "level": "300",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT321",
+    "level": "300",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT322",
+    "level": "300",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT323",
+    "level": "300",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT324",
+    "level": "300",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT325",
+    "level": "300",
+    "coordinator": "Dr. Information Kamara",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT401",
+    "level": "400",
+    "coordinator": "Dr. Information Adebayo",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT402",
+    "level": "400",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT403",
+    "level": "400",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT404",
+    "level": "400",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT405",
+    "level": "400",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Information Technology"
+  },
+  {
+    "name": "IT Fundamentals ",
+    "code": "IFT421",
+    "level": "400",
+    "coordinator": "Dr. Information Eze",
+    "outline": [
+      "IT Fundamentals",
+      "History of Computing",
+      "Hardware Components",
+      "Operating Systems Overview",
+      "Introduction to Networking"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Computer Networks ",
+    "code": "IFT422",
+    "level": "400",
+    "coordinator": "Dr. Information Olaoye",
+    "outline": [
+      "Networking Concepts",
+      "LAN, WAN, and MAN",
+      "IP Addressing",
+      "Routing and Switching",
+      "Wireless Networks"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Database Management Systems ",
+    "code": "IFT423",
+    "level": "400",
+    "coordinator": "Dr. Information Mensah",
+    "outline": [
+      "Relational Databases",
+      "SQL Queries",
+      "Database Security",
+      "Data Warehousing Basics",
+      "Normalization"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Web Technologies ",
+    "code": "IFT424",
+    "level": "400",
+    "coordinator": "Dr. Information Toure",
+    "outline": [
+      "Web Technologies",
+      "HTML5 and CSS3",
+      "JavaScript Basics",
+      "Web Hosting and Deployment",
+      "Web Security"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Cloud Computing ",
+    "code": "IFT425",
+    "level": "400",
+    "coordinator": "Dr. Information Kamara",
+    "outline": [
+      "Cloud Computing Fundamentals",
+      "IaaS, PaaS, SaaS Models",
+      "Virtualization",
+      "Cloud Security",
+      "Future Trends in IT"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Information Technology"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC101",
+    "level": "100",
+    "coordinator": "Dr. Computer Adebayo",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC102",
+    "level": "100",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC103",
+    "level": "100",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC104",
+    "level": "100",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC105",
+    "level": "100",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC121",
+    "level": "100",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC122",
+    "level": "100",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC123",
+    "level": "100",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC124",
+    "level": "100",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC125",
+    "level": "100",
+    "coordinator": "Dr. Computer Kamara",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC201",
+    "level": "200",
+    "coordinator": "Dr. Computer Adebayo",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC202",
+    "level": "200",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC203",
+    "level": "200",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC204",
+    "level": "200",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC205",
+    "level": "200",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC221",
+    "level": "200",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC222",
+    "level": "200",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC223",
+    "level": "200",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC224",
+    "level": "200",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC225",
+    "level": "200",
+    "coordinator": "Dr. Computer Kamara",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC301",
+    "level": "300",
+    "coordinator": "Dr. Computer Adebayo",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC302",
+    "level": "300",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC303",
+    "level": "300",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC304",
+    "level": "300",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC305",
+    "level": "300",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC321",
+    "level": "300",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC322",
+    "level": "300",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC323",
+    "level": "300",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC324",
+    "level": "300",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC325",
+    "level": "300",
+    "coordinator": "Dr. Computer Kamara",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC401",
+    "level": "400",
+    "coordinator": "Dr. Computer Adebayo",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC402",
+    "level": "400",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC403",
+    "level": "400",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC404",
+    "level": "400",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC405",
+    "level": "400",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Introduction to Computer Science ",
+    "code": "CSC421",
+    "level": "400",
+    "coordinator": "Dr. Computer Eze",
+    "outline": [
+      "History of Computing",
+      "Basic Logic Gates",
+      "Binary Number System",
+      "Overview of Programming Languages",
+      "Problem-Solving in CS"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Data Structures ",
+    "code": "CSC422",
+    "level": "400",
+    "coordinator": "Dr. Computer Olaoye",
+    "outline": [
+      "Arrays and Linked Lists",
+      "Stacks and Queues",
+      "Trees and Graphs",
+      "Hashing Techniques",
+      "Complexity Analysis"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Discrete Mathematics ",
+    "code": "CSC423",
+    "level": "400",
+    "coordinator": "Dr. Computer Mensah",
+    "outline": [
+      "Sets, Relations and Functions",
+      "Propositional Logic",
+      "Graph Theory Basics",
+      "Combinatorics",
+      "Proof Techniques"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Computer Architecture ",
+    "code": "CSC424",
+    "level": "400",
+    "coordinator": "Dr. Computer Toure",
+    "outline": [
+      "CPU Design",
+      "Memory Hierarchy",
+      "Instruction Sets",
+      "Parallel Processing",
+      "Pipelining"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Theory of Computation ",
+    "code": "CSC425",
+    "level": "400",
+    "coordinator": "Dr. Computer Kamara",
+    "outline": [
+      "Finite Automata",
+      "Pushdown Automata",
+      "Turing Machines",
+      "Computational Complexity",
+      "Languages and Grammars"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Computer Science"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT101",
+    "level": "100",
+    "coordinator": "Dr. Artificial Adebayo",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT102",
+    "level": "100",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT103",
+    "level": "100",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT104",
+    "level": "100",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT105",
+    "level": "100",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT121",
+    "level": "100",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT122",
+    "level": "100",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT123",
+    "level": "100",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT124",
+    "level": "100",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT125",
+    "level": "100",
+    "coordinator": "Dr. Artificial Kamara",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT201",
+    "level": "200",
+    "coordinator": "Dr. Artificial Adebayo",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT202",
+    "level": "200",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT203",
+    "level": "200",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT204",
+    "level": "200",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT205",
+    "level": "200",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT221",
+    "level": "200",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT222",
+    "level": "200",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT223",
+    "level": "200",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT224",
+    "level": "200",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT225",
+    "level": "200",
+    "coordinator": "Dr. Artificial Kamara",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT301",
+    "level": "300",
+    "coordinator": "Dr. Artificial Adebayo",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT302",
+    "level": "300",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT303",
+    "level": "300",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT304",
+    "level": "300",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT305",
+    "level": "300",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT321",
+    "level": "300",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT322",
+    "level": "300",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT323",
+    "level": "300",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT324",
+    "level": "300",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT325",
+    "level": "300",
+    "coordinator": "Dr. Artificial Kamara",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT401",
+    "level": "400",
+    "coordinator": "Dr. Artificial Adebayo",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT402",
+    "level": "400",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT403",
+    "level": "400",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT404",
+    "level": "400",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT405",
+    "level": "400",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 1,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Foundations of Artificial Intelligence ",
+    "code": "AIT421",
+    "level": "400",
+    "coordinator": "Dr. Artificial Eze",
+    "outline": [
+      "AI Fundamentals",
+      "History of AI",
+      "Problem-Solving Agents",
+      "Search Algorithms",
+      "Constraint Satisfaction Problems"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Knowledge Representation and Reasoning ",
+    "code": "AIT422",
+    "level": "400",
+    "coordinator": "Dr. Artificial Olaoye",
+    "outline": [
+      "Propositional Logic",
+      "Predicate Logic",
+      "Ontologies",
+      "Knowledge Graphs",
+      "Reasoning Systems"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Machine Learning for AI ",
+    "code": "AIT423",
+    "level": "400",
+    "coordinator": "Dr. Artificial Mensah",
+    "outline": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Neural Networks",
+      "Model Evaluation"
+    ],
+    "unitLoad": 3,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "Natural Language Processing ",
+    "code": "AIT424",
+    "level": "400",
+    "coordinator": "Dr. Artificial Toure",
+    "outline": [
+      "Text Preprocessing",
+      "Language Models",
+      "Sentiment Analysis",
+      "Machine Translation",
+      "Speech Recognition"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  },
+  {
+    "name": "AI Applications ",
+    "code": "AIT425",
+    "level": "400",
+    "coordinator": "Dr. Artificial Kamara",
+    "outline": [
+      "Computer Vision",
+      "Robotics",
+      "Expert Systems",
+      "Autonomous Agents",
+      "Ethics in AI"
+    ],
+    "unitLoad": 4,
+    "semester": 2,
+    "department": "Artificial Intelligence"
+  }
+]

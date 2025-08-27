@@ -7,7 +7,13 @@ export const attachUserIfPresent = (req: Request, _res: Response, next: NextFunc
   if (!token) return next();
   try {
     const payload = verifyJwt(token);
-    (req as any).user = { id: payload.userId, role: payload.role };
+    console.log('Decoded JWT payload:', payload); // <-- Add this line
+    (req as any).user = {
+      id: payload.userId,
+      role: payload.role,
+      department: payload.department ?? undefined,
+      level: payload.level ?? undefined,
+    };
   } catch (_) {
     // ignore invalid token
   }

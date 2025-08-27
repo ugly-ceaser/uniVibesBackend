@@ -185,19 +185,30 @@ export async function seedForumData(prisma: PrismaClient) {
 
   for (const template of questionTemplates) {
     const forum = forums[template.forumIndex];
+    // Map forum index to enum
+    const categoryByIndex = [
+      'GENERAL_DISCUSSION',
+      'ACADEMIC_HELP',
+      'STUDENT_LIFE',
+      'CAREER_AND_INTERNSHIPS',
+      'TECH_AND_PROGRAMMING',
+      'CAMPUS_SERVICES',
+    ] as const;
+    const category = categoryByIndex[template.forumIndex];
     
     for (const questionData of template.questions) {
       // Create question
       const randomAuthor = createdUsers[Math.floor(Math.random() * createdUsers.length)];
       
       const question = await prisma.question.create({
-        data: {
+        data: ({
           title: questionData.title,
           body: questionData.body,
           forumId: forum.id,
           authorId: randomAuthor.id,
           status: 'Cleared',
-        }
+          category: category,
+        } as any)
       });
       
       totalQuestionsCreated++;
