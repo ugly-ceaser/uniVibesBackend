@@ -50,12 +50,12 @@ export const createCourse = asyncHandler(async (req: Request, res: Response) => 
     throw new Error("Prisma client not found in request container");
   }
 
-  const { name, coordinator, outline, unitLoad, semester, code, level } = req.body;
+  const { name, coordinator, outline, unitLoad, semester, code, level, department } = req.body;
 
-  if (!name || !coordinator || unitLoad == null || semester == null) {
+  if (!name || !coordinator || unitLoad == null || semester == null || !department) {
     return res.status(400).json({
       status: 400,
-      message: "Missing required fields: name, coordinator, unitLoad, semester",
+      message: "Missing required fields: name, coordinator, unitLoad, semester, department",
       requestId: (req as any).id,
     });
   }
@@ -69,6 +69,7 @@ export const createCourse = asyncHandler(async (req: Request, res: Response) => 
     outline: outline ?? null,
     unitLoad: Number(unitLoad),
     semester: Number(semester),
+    department,
   });
 
   res.status(201).json({ data: course });

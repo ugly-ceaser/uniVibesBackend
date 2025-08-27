@@ -33,8 +33,8 @@ export const createCoursesService = (prisma: PrismaClient) => {
 
       return prisma.course.findMany({
         where: {
-          department,
           level,
+          department,
         },
         orderBy: { name: 'asc' },
       });
@@ -45,6 +45,9 @@ export const createCoursesService = (prisma: PrismaClient) => {
     },
 
     create: async (data: CourseCreateInput): Promise<Course> => {
+      if (!data) {
+        throw new Error('Data must be empty');
+      }
       return prisma.course.create({ data });
     },
   };
