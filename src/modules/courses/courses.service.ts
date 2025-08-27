@@ -8,6 +8,7 @@ type CourseCreateInput = {
   outline?: string | null;
   unitLoad: number;
   semester: number;
+  department:string;
 };
 
 export const createCoursesService = (prisma: PrismaClient) => {
