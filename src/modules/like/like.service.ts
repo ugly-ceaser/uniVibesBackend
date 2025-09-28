@@ -1,17 +1,17 @@
-import { PrismaClient, GuideItem, Likes, User, contentType, Prisma } from '@prisma/client';
+import { PrismaClient, GuideItem, Likes, User, ContentType, Prisma } from '@prisma/client';
 
 // Helper function to validate content exists based on type
-const validateContentExists = async (prisma: PrismaClient, contentId: string, type: contentType): Promise<void> => {
+const validateContentExists = async (prisma: PrismaClient, contentId: string, type: ContentType): Promise<void> => {
   switch (type) {
-    case contentType.GuideItem:
+    case ContentType.GuideItem:
       const guide = await prisma.guideItem.findUnique({ where: { id: contentId } });
       if (!guide) throw new Error('Guide not found');
       break;
-    case contentType.Answer:
+    case ContentType.Answer:
       const answer = await prisma.answer.findUnique({ where: { id: contentId } });
       if (!answer) throw new Error('Answer not found');
       break;
-    case contentType.Comment:
+    case ContentType.Comment:
       const comment = await prisma.comment.findUnique({ where: { id: contentId } });
       if (!comment) throw new Error('Comment not found');
       break;
@@ -24,22 +24,22 @@ const validateContentExists = async (prisma: PrismaClient, contentId: string, ty
 const updateLikeCount = async (
   tx: Prisma.TransactionClient, 
   contentId: string, 
-  type: contentType, 
+  type: ContentType, 
   operation: 'increment' | 'decrement'
 ): Promise<any> => {
   const updateData = { likesCount: { [operation]: 1 } };
   
   switch (type) {
-    case contentType.GuideItem:
+    case ContentType.GuideItem:
       return await tx.guideItem.update({
         where: { id: contentId },
         data: updateData
       });
-    case contentType.Answer:
+    case ContentType.Answer:
       // Note: Answer model doesn't have likesCount in your schema
       // You might need to add it or handle differently
       throw new Error('Answer likes not yet implemented - add likesCount to Answer model');
-    case contentType.Comment:
+    case ContentType.Comment:
       // Note: Comment model doesn't have likesCount in your schema  
       // You might need to add it or handle differently
       throw new Error('Comment likes not yet implemented - add likesCount to Comment model');
@@ -85,7 +85,7 @@ interface PaginatedLikers {
 export const createLikeService = (prisma: PrismaClient) => {
   return {
     // Generic like function for any content type
-    likeContent: async (contentId: string, contentType: contentType, userId: string): Promise<LikeResult> => {
+    likeContent: async (contentId: string, contentType: ContentType, userId: string): Promise<LikeResult> => {
       try {
         // Check if user exists
         const user = await prisma.user.findUnique({
@@ -136,7 +136,7 @@ export const createLikeService = (prisma: PrismaClient) => {
     },
 
     // Generic unlike function for any content type
-    unlikeContent: async (contentId: string, contentType: contentType, userId: string): Promise<GuideItem> => {
+    unlikeContent: async (contentId: string, contentType: ContentType, userId: string): Promise<GuideItem> => {
       try {
         // Validate content exists based on type
         await validateContentExists(prisma, contentId, contentType);
@@ -175,11 +175,11 @@ export const createLikeService = (prisma: PrismaClient) => {
 
     // Legacy guide-specific methods (for backward compatibility)
     likeGuide: async (guideId: string, userId: string): Promise<LikeResult> => {
-      return await createLikeService(prisma).likeContent(guideId, contentType.GuideItem, userId);
+      return await createLikeService(prisma).likeContent(guideId, ContentType.GuideItem, userId);
     },
 
     unlikeGuide: async (guideId: string, userId: string): Promise<GuideItem> => {
-      return await createLikeService(prisma).unlikeContent(guideId, contentType.GuideItem, userId);
+      return await createLikeService(prisma).unlikeContent(guideId, ContentType.GuideItem, userId);
     },
 
     // Get guide likes data
@@ -228,7 +228,7 @@ export const createLikeService = (prisma: PrismaClient) => {
           where: {
             contentId: guideId,
             userId: userId,
-            contentType: contentType.GuideItem
+            contentType: ContentType.GuideItem
           }
         });
 
@@ -258,7 +258,7 @@ export const createLikeService = (prisma: PrismaClient) => {
         const totalCount = await prisma.likes.count({
           where: {
             contentId: guideId,
-            contentType: contentType.GuideItem
+            contentType: ContentType.GuideItem
           }
         });
 
@@ -266,7 +266,7 @@ export const createLikeService = (prisma: PrismaClient) => {
         const likes = await prisma.likes.findMany({
           where: {
             contentId: guideId,
-            contentType: contentType.GuideItem
+            contentType: ContentType.GuideItem
           },
           include: {
             user: {
@@ -312,14 +312,14 @@ export const createLikeService = (prisma: PrismaClient) => {
         const totalCount = await prisma.likes.count({
           where: {
             userId: userId,
-            contentType: contentType.GuideItem
+            contentType: ContentType.GuideItem
           }
         });
 
         const likes = await prisma.likes.findMany({
           where: {
             userId: userId,
-            contentType: contentType.GuideItem
+            contentType: ContentType.GuideItem
           },
           include: {
             // We can't directly join to GuideItem through contentId since it's a string

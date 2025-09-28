@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { asyncHandler } from '../../utils/http';
 import { createLikeService } from './like.service';
-import { contentType } from '@prisma/client';
+import { ContentType} from '@prisma/client';
 
 // Generic like function for any content
 export const likeContent = asyncHandler(async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ export const likeContent = asyncHandler(async (req: Request, res: Response) => {
   const { contentType: type, contentId } = req.params;
   
   // Validate content type
-  if (!Object.values(contentType).includes(type as contentType)) {
+  if (!Object.values(ContentType).includes(type as ContentType)) {
     return res.status(400).json({
       status: 400,
       message: 'Invalid content type',
@@ -33,7 +33,7 @@ export const likeContent = asyncHandler(async (req: Request, res: Response) => {
   const service = createLikeService(prisma);
   
   try {
-    const result = await service.likeContent(contentId, type as contentType, userId);
+    const result = await service.likeContent(contentId, type as ContentType, userId);
     res.status(201).json({
       message: `${type} liked successfully`,
       data: result
@@ -78,7 +78,7 @@ export const unlikeContent = asyncHandler(async (req: Request, res: Response) =>
   const { contentType: type, contentId } = req.params;
   
   // Validate content type
-  if (!Object.values(contentType).includes(type as contentType)) {
+  if (!Object.values(ContentType).includes(type as ContentType)) {
     return res.status(400).json({
       status: 400,
       message: 'Invalid content type',
@@ -89,7 +89,7 @@ export const unlikeContent = asyncHandler(async (req: Request, res: Response) =>
   const service = createLikeService(prisma);
   
   try {
-    const result = await service.unlikeContent(contentId, type as contentType, userId);
+    const result = await service.unlikeContent(contentId, type as ContentType, userId);
     res.status(200).json({
       message: `${type} unliked successfully`,
       data: result
