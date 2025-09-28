@@ -9,6 +9,7 @@ import { errorHandler, notFoundHandler } from '../middlewares/errorHandler';
 import { attachUserIfPresent } from '../middlewares/authMiddleware';
 import { conditionalResponseLogger } from '../middlewares/responseLogger';
 import { registerRoutes } from '../modules';
+import { swaggerSpec, swaggerUi, swaggerUiOptions } from '../config/swagger';
 
 export const createExpressApp = (container: AwilixContainer) => {
   const app = express();
@@ -22,7 +23,18 @@ export const createExpressApp = (container: AwilixContainer) => {
   app.use(conditionalResponseLogger); // 📤 Log all responses in development
   app.use(apiRateLimiter);
   app.use(scopePerRequest(container));
+  
+  // Health check endpoint
   app.get('/health', (_req, res) => res.status(200).json({ status: 'ok' }));
+  
+  // Swagger documentation
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
+  
+  // Serve swagger.json
+  app.get('/swagger.json', (_req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
+  });
 
   app.use(attachUserIfPresent);
   registerRoutes(app, container);
