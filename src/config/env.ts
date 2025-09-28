@@ -7,4 +7,5 @@ export const env = {
   logLevel: process.env.LOG_LEVEL || 'info',
   enableResponseLogging: process.env.ENABLE_RESPONSE_LOGGING === 'true' || process.env.NODE_ENV === 'development',
   responseLogLevel: process.env.RESPONSE_LOG_LEVEL || 'detailed', // 'simple', 'detailed', 'none'
+    corsOrigins: (process.env.CORS_ORIGINS || '*').split(','),
 }; 

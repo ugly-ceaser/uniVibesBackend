@@ -1,6 +1,6 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { API_PREFIX } from '../utils/constants';
+import { API_PREFIX, productionUrl } from '../utils/constants';
 
 const options: swaggerJSDoc.Options = {
   definition: {
@@ -20,7 +20,7 @@ const options: swaggerJSDoc.Options = {
         description: 'Development server',
       },
       {
-        url: `https://api.appname.com${API_PREFIX}`,
+        url: `${productionUrl+API_PREFIX}`,
         description: 'Production server',
       },
     ],
