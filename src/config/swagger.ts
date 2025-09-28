@@ -213,6 +213,7 @@ const options: swaggerJSDoc.Options = {
   },
   apis: [
     './src/modules/**/*.routes.ts',
+    './src/modules/**/*.route.ts',
     './src/modules/**/*.controller.ts',
   ],
 };

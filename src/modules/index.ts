@@ -6,7 +6,7 @@ import { createCoursesRouter } from './courses/courses.routes';
 import { createMapRouter } from './map/map.routes';
 import { createForumRouter } from './forum/forum.routes';
 import { createGuideRouter } from './guide/guide.routes';
-import { createProfileRouter } from './user/userProfile.route';
+import { createProfileRouter } from './user/userProfile.routes';
 import { createLikeRouter } from './like/like.routes';
 
 export const registerRoutes = (app: Application, container: AwilixContainer) => {
