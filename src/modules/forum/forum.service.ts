@@ -21,7 +21,12 @@ export const createForumService = (prisma: PrismaClient) => {
           orderBy: { createdAt: 'desc' },
           skip,
           take: pageSize,
-          include: { _count: { select: { answers: true } } }
+          include: { 
+            author: {
+              select: { id: true, fullname: true, email: true }
+            },
+            _count: { select: { answers: true } } 
+          }
         }),
         prisma.question.count({ where })
       ]);
@@ -69,8 +74,15 @@ export const createForumService = (prisma: PrismaClient) => {
       body: string,
       authorId?: string,
       forumId?: string
-    ): Promise<Question> => {
-      return prisma.question.create({ data: { title, body, authorId, forumId } });
+    ) => {
+      return prisma.question.create({ 
+        data: { title, body, authorId, forumId },
+        include: {
+          author: {
+            select: { id: true, fullname: true, email: true }
+          }
+        }
+      });
     },
 
     // Create an answer
@@ -78,8 +90,15 @@ export const createForumService = (prisma: PrismaClient) => {
       questionId: string,
       body: string,
       authorId?: string
-    ): Promise<Answer> => {
-      return prisma.answer.create({ data: { questionId, body, authorId } });
+    ) => {
+      return prisma.answer.create({ 
+        data: { questionId, body, authorId },
+        include: {
+          author: {
+            select: { id: true, fullname: true, email: true }
+          }
+        }
+      });
     },
 
     // Create a forum
@@ -144,6 +163,11 @@ export const createForumService = (prisma: PrismaClient) => {
           authorId,
           answerId: resolvedAnswerId,
           parentId
+        },
+        include: {
+          author: {
+            select: { id: true, fullname: true, email: true }
+          }
         }
       });
 
