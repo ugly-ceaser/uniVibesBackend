@@ -7,7 +7,206 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ================= Enums =================
+model User {
+  id                 String        @id @default(uuid())
+  email              String        @unique
+  password           String
+  role               Role          @default(GUEST)
+  regNumber          String?       @unique
+  department         String?
+  faculty            String?
+  level              Int?
+  verificationStatus Boolean?      @default(false)
+  status             Status        @default(Cleared)
+  createdAt          DateTime      @default(now())
+  avatarUrl          String?
+  fullname           String
+  nin                String?
+  phone              String?
+  semester           String?
+  answers            Answer[]
+  chatSessions       ChatSession[]
+  comments           Comment[]
+  forum              Forum[]
+  likes              Likes[]
+  questions          Question[]
+}
+
+model Course {
+  id           String        @id @default(uuid())
+  name         String
+  code         String
+  level        String
+  coordinator  String
+  unitLoad     Int
+  semester     Int
+  createdAt    DateTime      @default(now())
+  department   String
+  outline      String[]
+  chatSessions ChatSession[]
+}
+
+model MapLocation {
+  id          String         @id @default(uuid())
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+  status      LocationStatus @default(ACTIVE)
+  createdAt   DateTime       @default(now())
+}
+
+model Forum {
+  id                 String     @id @default(uuid())
+  name               String     @unique
+  verificationStatus Boolean?   @default(false)
+  creatorId          String?
+  createdAt          DateTime   @default(now())
+  visibiltyStatus    Boolean    @default(false)
+  creator            User?      @relation(fields: [creatorId], references: [id])
+  questions          Question[]
+}
+
+model Question {
+  id        String        @id @default(uuid())
+  title     String
+  body      String
+  forumId   String?
+  status    Status        @default(Cleared)
+  authorId  String?
+  createdAt DateTime      @default(now())
+  category  ForumCategory @default(GENERAL_DISCUSSION)
+  answers   Answer[]
+  author    User?         @relation(fields: [authorId], references: [id])
+  forum     Forum?        @relation(fields: [forumId], references: [id])
+}
+
+model Answer {
+  id            String    @id @default(uuid())
+  body          String
+  authorId      String?
+  questionId    String
+  status        Status    @default(Cleared)
+  createdAt     DateTime  @default(now())
+  commentsCount Int       @default(0)
+  author        User?     @relation(fields: [authorId], references: [id])
+  question      Question  @relation(fields: [questionId], references: [id])
+  comments      Comment[] @relation("AnswerComments")
+
+  @@index([questionId])
+}
+
+model Comment {
+  id         String    @id @default(uuid())
+  body       String
+  authorId   String?
+  answerId   String?
+  parentId   String?
+  status     Status    @default(Cleared)
+  replyCount Int       @default(0)
+  createdAt  DateTime  @default(now())
+  answer     Answer?   @relation("AnswerComments", fields: [answerId], references: [id])
+  author     User?     @relation(fields: [authorId], references: [id])
+  parent     Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies    Comment[] @relation("CommentReplies")
+
+  @@index([answerId])
+  @@index([parentId])
+  @@index([createdAt])
+}
+
+model GuideItem {
+  id         String   @id @default(uuid())
+  title      String
+  content    String
+  status     Status   @default(Cleared)
+  likesCount Int      @default(0)
+  createdAt  DateTime @default(now())
+}
+
+model Likes {
+  id          String      @id @default(uuid())
+  userId      String?
+  contentId   String
+  contentType ContentType
+  user        User?       @relation(fields: [userId], references: [id])
+}
+
+// Enhanced AI Chat Session model based on requirements
+model ChatSession {
+  id              String      @id @default(uuid())
+  studentId       String
+  courseId        String?
+  sessionType     SessionType @default(general)
+  title           String
+  status          SessionStatus @default(active)
+  metadata        Json?       // Store course context, user preferences, etc.
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  lastMessageAt   DateTime?
+  
+  // Relations
+  student         User         @relation(fields: [studentId], references: [id])
+  course          Course?      @relation(fields: [courseId], references: [id])
+  messages        ChatMessage[]
+  analytics       ChatAnalytics[]
+
+  // Indexes for performance
+  @@index([studentId, courseId])
+  @@index([studentId, sessionType])
+  @@index([lastMessageAt])
+  @@index([createdAt])
+  
+  // Constraint: One active session per student per course
+  @@unique([studentId, courseId, sessionType], name: "unique_active_course_session")
+}
+
+// Enhanced AI Chat Message model with sequence tracking
+model ChatMessage {
+  id              String        @id @default(uuid())
+  sessionId       String
+  role            MessageRole
+  content         String        @db.Text
+  contentType     MessageContentType @default(text)
+  metadata        Json?         // Store confidence, sources, tokens, cost, etc.
+  sequenceNumber  Int           // For proper message ordering
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  // Relations
+  session         ChatSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  analytics       ChatAnalytics[]
+
+  // Indexes for performance
+  @@index([sessionId, sequenceNumber])
+  @@index([sessionId, createdAt])
+  @@index([sessionId, role])
+  
+  // Ensure unique sequence per session
+  @@unique([sessionId, sequenceNumber])
+}
+
+// AI Chat Analytics for tracking usage, costs, and performance
+model ChatAnalytics {
+  id              String      @id @default(uuid())
+  sessionId       String
+  messageId       String?
+  tokensUsed      Int?
+  modelUsed       String?
+  responseTimeMs  Int?
+  costUsd         Decimal?    @db.Decimal(10, 8)
+  confidenceScore Decimal?    @db.Decimal(3, 2) // 0.00 to 1.00
+  createdAt       DateTime    @default(now())
+  
+  // Relations
+  session         ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  message         ChatMessage? @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  // Indexes for analytics queries
+  @@index([sessionId])
+  @@index([modelUsed, createdAt])
+  @@index([createdAt, costUsd])
+}
 
 enum Role {
   STUDENT
@@ -33,7 +232,6 @@ enum LocationStatus {
   INACTIVE
 }
 
-// Forum post categories
 enum ForumCategory {
   GENERAL_DISCUSSION
   ACADEMIC_HELP
@@ -43,155 +241,29 @@ enum ForumCategory {
   CAMPUS_SERVICES
 }
 
-// ================= Models =================
+// ================= AI Chat Enums =================
 
-model User {
-  id                  String         @id @default(uuid())
-  email               String         @unique
-  fullname            String
-  password            String
-  role                Role           @default(GUEST)
-  regNumber           String?        @unique
-  department          String?
-  faculty             String?
-  level               Int?
-  semester            String?
-  phone               String?
-  nin                 String?
-  avatarUrl           String?
-  verificationStatus  Boolean?       @default(false)
-  status              Status         @default(Cleared)
-  createdAt           DateTime       @default(now())
-
-  // Relations
-  questions           Question[]
-  answers             Answer[]
-  comments            Comment[]
-  forum               Forum[]
-  likes               Likes[]
-  chatSessions        ChatSession[]  // NEW: Student’s AI chat sessions
+enum SessionType {
+  course
+  general
+  academic
+  campus
 }
 
-model Course {
-  id          String   @id @default(uuid())
-  name        String
-  code        String
-  level       String
-  coordinator String
-  outline     String[]
-  unitLoad    Int
-  semester    Int
-  department  String
-  createdAt   DateTime @default(now())
+enum SessionStatus {
+  active
+  archived
+  deleted
 }
 
-model MapLocation {
-  id          String         @id @default(uuid())
-  name        String
-  description String?
-  latitude    Float
-  longitude   Float
-  status      LocationStatus @default(ACTIVE)
-  createdAt   DateTime       @default(now())
+enum MessageRole {
+  user
+  assistant
+  system
 }
 
-model Forum {
-  id                 String     @id @default(uuid())
-  name               String     @unique
-  creator            User?      @relation(fields:[creatorId], references:[id])
-  verificationStatus Boolean?   @default(false)
-  creatorId          String?
-  createdAt          DateTime   @default(now())
-  visibiltyStatus    Boolean    @default(false)
-
-  // Relations
-  questions          Question[]
-}
-
-model Question {
-  id        String        @id @default(uuid())
-  title     String
-  body      String
-  category  ForumCategory @default(GENERAL_DISCUSSION)
-  forum     Forum?        @relation(fields:[forumId], references: [id])
-  forumId   String?
-  author    User?         @relation(fields: [authorId], references: [id])
-  status    Status        @default(Cleared)
-  authorId  String?
-  answers   Answer[]
-  createdAt DateTime      @default(now())
-}
-
-model Answer {
-  id            String     @id @default(uuid())
-  body          String
-  author        User?      @relation(fields: [authorId], references: [id])
-  authorId      String?
-  question      Question   @relation(fields: [questionId], references: [id])
-  questionId    String
-  status        Status     @default(Cleared)
-  createdAt     DateTime   @default(now())
-  comments      Comment[]  @relation("AnswerComments")
-  commentsCount Int        @default(0) // denormalized for fast count display
-
-  @@index([questionId])
-}
-
-model Comment {
-  id         String     @id @default(uuid())
-  body       String
-  author     User?      @relation(fields: [authorId], references: [id])
-  authorId   String?
-  answer     Answer?    @relation("AnswerComments", fields: [answerId], references: [id])
-  answerId   String?
-  parent     Comment?   @relation("CommentReplies", fields: [parentId], references: [id])
-  parentId   String?
-  status     Status     @default(Cleared)
-  replies    Comment[]  @relation("CommentReplies")
-  replyCount Int        @default(0) // denormalized replies count
-  createdAt  DateTime   @default(now())
-
-  @@index([answerId])
-  @@index([parentId])
-  @@index([createdAt])
-}
-
-model GuideItem {
-  id          String   @id @default(uuid())
-  title       String
-  content     String
-  status      Status   @default(Cleared)
-  likesCount  Int      @default(0) // denormalized for fast likes display
-  createdAt   DateTime @default(now())
-}
-
-model Likes {
-  id          String      @id @default(uuid())
-  contentType ContentType
-  user        User?       @relation(fields:[userId], references:[id])
-  userId      String?
-  contentId   String
-}
-
-// ================= AI Chat Models =================
-
-model ChatSession {
-  id         String       @id @default(uuid())
-  student    User         @relation(fields: [studentId], references: [id])
-  studentId  String
-  title      String?      // e.g. "Photosynthesis Notes"
-  createdAt  DateTime     @default(now())
-
-  messages   ChatMessage[]
-}
-
-model ChatMessage {
-  id         String       @id @default(uuid())
-  session    ChatSession  @relation(fields: [sessionId], references: [id])
-  sessionId  String
-  role       String       // "system" | "user" | "assistant"
-  content    String
-  createdAt  DateTime     @default(now())
-
-  @@index([sessionId])
+enum MessageContentType {
+  text
+  markdown
+  json
 }

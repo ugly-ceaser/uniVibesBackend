@@ -209,6 +209,10 @@ const options: swaggerJSDoc.Options = {
         name: 'Likes',
         description: 'Content likes and reactions',
       },
+      {
+        name: 'AI Chat',
+        description: 'AI-powered chat assistance with OpenAI integration. Features: course-specific sessions, cost optimization (3 model tiers), automatic message sequencing, response caching, and comprehensive session management. Supports course lookup by code (e.g., SWE101) or UUID.',
+      },
     ],
   },
   apis: [
