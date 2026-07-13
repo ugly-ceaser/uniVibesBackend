@@ -8,10 +8,10 @@ export const createPrismaClient = () => {
     prisma = new PrismaClient({
       datasources: {
         db: {
-          // Ensure SSL and limit connections
+          // Ensure SSL and limit connections dynamically
           url: env.databaseUrl.includes('sslmode')
-            ? `${env.databaseUrl}&connection_limit=5`
-            : `${env.databaseUrl}?sslmode=require&connection_limit=5`
+            ? `${env.databaseUrl}&connection_limit=${env.databaseConnectionLimit}`
+            : `${env.databaseUrl}?sslmode=require&connection_limit=${env.databaseConnectionLimit}`
         }
       },
       log: env.nodeEnv === 'production' ? [] : ['query', 'info', 'warn', 'error']

@@ -12,7 +12,10 @@ if (!prisma) {
 
   const {
     email,
-    fullname,
+    username,
+    firstname,
+    middlename,
+    lastname,
     password,
     role,
     regNumber,
@@ -22,10 +25,10 @@ if (!prisma) {
     verificationStatus,
   } = req.body || {};
 
-  if (!email || !password) {
+  if (!email || !password || !username || !firstname || !lastname) {
     return res.status(400).json({
       status: 400,
-      message: "Email and password are required",
+      message: "Email, username, firstname, lastname, and password are required",
       requestId: (req as any).id,
     });
   }
@@ -43,7 +46,11 @@ if (!prisma) {
 
   const result = await service.register({
     email,
-    fullname,
+    username,
+    firstname,
+    middlename,
+    lastname,
+    fullname: req.body.fullname || `${firstname} ${middlename ? middlename + ' ' : ''}${lastname}`.trim(),
     password,
     role: role ? role.toLowerCase() : undefined, // normalizeRole expects lowercase
     regNumber,
@@ -77,3 +84,24 @@ if (!prisma) {
   const result = await service.login({ email, password });
   return res.status(200).json(result);
 });
+
+export const checkUsername = asyncHandler(async (req: Request, res: Response) => {
+  const prisma = req.container?.cradle.prisma;
+  if (!prisma) {
+    throw new Error("Prisma client not found in request container");
+  }
+  const service = createAuthService(prisma);
+  const { username } = req.body || {};
+
+  if (!username) {
+    return res.status(400).json({
+      status: 400,
+      message: "Username is required",
+      requestId: (req as any).id,
+    });
+  }
+
+  const result = await service.checkUsername(username);
+  return res.status(200).json(result);
+});
+

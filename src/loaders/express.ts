@@ -3,7 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import { scopePerRequest } from 'awilix-express';
 import type { AwilixContainer } from 'awilix';
-import { apiRateLimiter } from '../middlewares/rateLimiter';
+import { createRateLimiter } from '../middlewares/rateLimiter';
 import { requestId, requestLogger } from '../middlewares/requestLogger';
 import { errorHandler, notFoundHandler } from '../middlewares/errorHandler';
 import { attachUserIfPresent } from '../middlewares/authMiddleware';
@@ -21,7 +21,7 @@ export const createExpressApp = (container: AwilixContainer) => {
   app.use(requestId);
   app.use(requestLogger);
   app.use(conditionalResponseLogger); // 📤 Log all responses in development
-  app.use(apiRateLimiter);
+  app.use(createRateLimiter(container));
   app.use(scopePerRequest(container));
   
   // Health check endpoint

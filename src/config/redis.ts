@@ -6,8 +6,15 @@ export const createRedisClient = () => {
 
   const client = new Redis(env.redisUrl, {
     lazyConnect: true,
-    maxRetriesPerRequest: null,
+    maxRetriesPerRequest: 3,
+    enableOfflineQueue: true, // Allow queuing commands/connecting rather than throwing immediately
+    connectTimeout: 5000,
     ...(isUpstash ? { tls: {} } : {}) // enable TLS only if using Upstash
+  });
+
+  client.on('error', (err) => {
+    // Gracefully catch and log redis connection or command errors
+    console.warn('⚠️ Redis connection error:', err.message);
   });
 
   return client;

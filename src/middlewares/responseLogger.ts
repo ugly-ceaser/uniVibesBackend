@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { env } from '../config/env';
+import { logger } from '../config/logger';
 
 interface ResponseData {
   statusCode: number;
@@ -55,55 +56,43 @@ export const responseLogger = (req: Request, res: Response, next: NextFunction) 
 function logResponse(data: ResponseData) {
   const { statusCode, method, url, responseTime, responseSize, requestId, body } = data;
   
-  // Color coding for different status codes
-  const getStatusColor = (status: number): string => {
-    if (status >= 200 && status < 300) return '\x1b[32m'; // Green
-    if (status >= 300 && status < 400) return '\x1b[33m'; // Yellow
-    if (status >= 400 && status < 500) return '\x1b[31m'; // Red
-    if (status >= 500) return '\x1b[35m'; // Magenta
-    return '\x1b[0m'; // Reset
-  };
-  
-  const statusColor = getStatusColor(statusCode);
-  const resetColor = '\x1b[0m';
-  
-  console.log('\n' + '='.repeat(80));
-  console.log(`${statusColor}📤 RESPONSE [${statusCode}]${resetColor} ${method} ${url}`);
+  let logMsg = `\n================================================================================\n`;
+  logMsg += `📤 RESPONSE [${statusCode}] ${method} ${url}\n`;
   
   if (requestId) {
-    console.log(`🔍 Request ID: ${requestId}`);
+    logMsg += `🔍 Request ID: ${requestId}\n`;
   }
   
   if (responseTime !== undefined) {
-    console.log(`⏱️  Response Time: ${responseTime}ms`);
+    logMsg += `⏱️  Response Time: ${responseTime}ms\n`;
   }
   
   if (responseSize !== undefined) {
-    console.log(`📊 Response Size: ${responseSize} bytes`);
+    logMsg += `📊 Response Size: ${responseSize} bytes\n`;
   }
   
   // Log response body with pretty formatting
   if (body !== undefined) {
-    console.log('📋 Response Body:');
+    logMsg += '📋 Response Body:\n';
     try {
       if (typeof body === 'string') {
-        // Try to parse as JSON for better formatting
         try {
           const parsed = JSON.parse(body);
-          console.log(JSON.stringify(parsed, null, 2));
+          logMsg += JSON.stringify(parsed, null, 2);
         } catch {
-          console.log(body);
+          logMsg += body;
         }
       } else {
-        console.log(JSON.stringify(body, null, 2));
+        logMsg += JSON.stringify(body, null, 2);
       }
     } catch (error) {
-      console.log('❌ Error formatting response body:', error);
-      console.log(body);
+      logMsg += `❌ Error formatting response body: ${error}\n${body}`;
     }
   }
   
-  console.log('='.repeat(80) + '\n');
+  logMsg += `\n================================================================================\n`;
+  
+  logger.debug(logMsg);
 }
 
 // Alternative simpler version for less verbose logging
@@ -112,14 +101,14 @@ export const simpleResponseLogger = (req: Request, res: Response, next: NextFunc
   const originalJson = res.json;
   
   res.send = function(body: any) {
-    console.log(`📤 [${res.statusCode}] ${req.method} ${req.originalUrl} - Response:`, 
+    logger.debug(`📤 [${res.statusCode}] ${req.method} ${req.originalUrl} - Response: ${
       typeof body === 'string' && body.length > 200 ? body.substring(0, 200) + '...' : body
-    );
+    }`);
     return originalSend.call(this, body);
   };
   
   res.json = function(body: any) {
-    console.log(`📤 [${res.statusCode}] ${req.method} ${req.originalUrl} - JSON Response:`, body);
+    logger.debug(`📤 [${res.statusCode}] ${req.method} ${req.originalUrl} - JSON Response: ${JSON.stringify(body)}`);
     return originalJson.call(this, body);
   };
   

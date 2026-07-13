@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { seedGuides, seedGuidesWithoutClearing } from '../utils/seedGuides';
 import { seedMapLocations, seedMapLocationsWithoutClearing } from '../utils/seedMapLocations';
 import { seedForumData, clearForumData } from '../utils/seedForumData';
-import { seedCourses, clearCourses } from '../utils/seedCourses';
+import { seedUniversityData } from '../utils/seedUniversityData';
 
 const prisma = new PrismaClient();
 
@@ -33,18 +33,11 @@ class DatabaseSeeder {
   async seedCourses(options: SeedOptions = {}): Promise<void> {
     const { clearExisting = false, verbose = true } = options;
     try {
-      if (verbose) console.log('📚 Starting course seeding process...');
-      if (clearExisting) {
-        if (verbose) console.log('🧹 Clearing existing courses...');
-        await clearCourses(this.prisma);
-      }
-      const existingCount = await this.prisma.course.count();
-      if (verbose) console.log(`📊 Current courses in database: ${existingCount}`);
-      const addedCount = await seedCourses(this.prisma);
+      if (verbose) console.log('📚 Starting university & course seeding process...');
+      await seedUniversityData(this.prisma);
       const newCount = await this.prisma.course.count();
       if (verbose) {
         console.log(`✅ Course seeding completed successfully!`);
-        console.log(`📈 Added ${addedCount} new courses`);
         console.log(`🎯 Total courses now: ${newCount}`);
       }
     } catch (error) {
@@ -254,21 +247,17 @@ class DatabaseSeeder {
     recentCourses: Array<{ id: string; name: string; department: string; createdAt: Date }>;
   }> {
     const totalCount = await this.prisma.course.count();
-    const recentCourses = [
-      {
-        id: "1",
-        name: "Intro to Software Engineering",
-        department: "Software Engineering", // <-- Add this property
-        createdAt: new Date(),
-        level: "100",
-        semester: 1,
-        code: "SWE101",
-        coordinator: "Dr. Smith",
-        outline: null,
-        unitLoad: 3,
-      },
-      // ...other courses, each with a 'department' property...
-    ];
+    const raw = await this.prisma.course.findMany({
+      select: { id: true, title: true, courseCode: true, createdAt: true, department: { select: { name: true } } },
+      orderBy: { createdAt: 'desc' },
+      take: 5,
+    });
+    const recentCourses = raw.map(c => ({
+      id: c.id,
+      name: `${c.courseCode} – ${c.title}`,
+      department: c.department.name,
+      createdAt: c.createdAt,
+    }));
     return { totalCount, recentCourses };
   }
 }

@@ -5,8 +5,12 @@ const roleEnum = z.enum(["student", "guest", "admin"]); // lowercase for request
 
 export const registerSchema = z.object({
   email: z.string().email(),
+  username: z.string().min(3),
+  firstname: z.string(),
+  middlename: z.string().nullable().optional(),
+  lastname: z.string(),
   password: z.string().min(6),
-  fullname:z.string(),
+  fullname: z.string().optional(),
   role: roleEnum.optional().default("student"),
   regNumber: z.string().nullable().optional(),
   department: z.string().nullable().optional(),

@@ -27,6 +27,14 @@ export const createAuthService = (prisma: PrismaClient) => {
         throw new Error("Email already registered");
       }
 
+      // Check if username exists
+      const existingUsername = await prisma.user.findUnique({
+        where: { username: input.username }
+      });
+      if (existingUsername) {
+        throw new Error("Username already taken");
+      }
+
       // Hash password
       const hashedPassword = await bcrypt.hash(input.password, 10);
 
@@ -35,8 +43,12 @@ export const createAuthService = (prisma: PrismaClient) => {
       const user = await prisma.user.create({
         data: {
           email: input.email,
+          username: input.username,
+          firstname: input.firstname,
+          middlename: input.middlename || null,
+          lastname: input.lastname,
           password: hashedPassword,
-          fullname: input.fullname,
+          fullname: input.fullname || `${input.firstname} ${input.middlename ? input.middlename + ' ' : ''}${input.lastname}`.trim(),
           role,
           regNumber: input.regNumber || null,
           department: input.department || null,
@@ -58,6 +70,11 @@ export const createAuthService = (prisma: PrismaClient) => {
         user: {
           id: user.id,
           email: user.email,
+          username: user.username,
+          firstname: user.firstname,
+          middlename: user.middlename,
+          lastname: user.lastname,
+          fullname: user.fullname,
           role: user.role,
           regNumber: user.regNumber,
           department: user.department,
@@ -92,6 +109,7 @@ export const createAuthService = (prisma: PrismaClient) => {
         user: {
           id: user.id,
           email: user.email,
+          fullname: user.fullname,
           role: user.role,
           regNumber: user.regNumber,
           department: user.department,
@@ -101,6 +119,14 @@ export const createAuthService = (prisma: PrismaClient) => {
         },
         token
       };
+    },
+
+    checkUsername: async (username: string) => {
+      const existing = await prisma.user.findUnique({
+        where: { username: username.trim().toLowerCase() }
+      });
+      return { available: !existing };
     }
   };
 };
+
