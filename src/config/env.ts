@@ -7,7 +7,13 @@ dotenv.config();
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().default(3000),
-  DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
+  DATABASE_URL: z.string().default(
+    process.env.NODE_ENV === 'test' 
+      ? 'postgresql://postgres:postgres@localhost:5432/test' 
+      : ''
+  ).refine((val) => process.env.NODE_ENV === 'test' || val.length > 0, {
+    message: "DATABASE_URL is required",
+  }),
   REDIS_URL: z.string().default('redis://cache:6379'),
   JWT_SECRET: z.string().default('change_me'),
   LOG_LEVEL: z.string().default('info'),

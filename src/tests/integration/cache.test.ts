@@ -8,6 +8,7 @@ describe('Cache Invalidation Middleware', () => {
     const mockDel = jest.fn().mockResolvedValue(true);
     
     const mockRedis = {
+      status: 'ready',
       scan: mockScan,
       del: mockDel,
     } as any;

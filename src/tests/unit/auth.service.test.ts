@@ -36,6 +36,9 @@ describe('AuthService', () => {
     const service = createAuthService(mockPrisma);
     const result = await service.register({ 
       email: 'a@b.com', 
+      username: 'testuser',
+      firstname: 'Test',
+      lastname: 'User',
       password: 'pw', 
       fullname: 'Test User',
       role: 'student' 
@@ -45,7 +48,7 @@ describe('AuthService', () => {
     expect(result.token).toBe('fake-jwt-token');
     expect(mockPrisma.user.create).toHaveBeenCalled();
     expect(bcrypt.hash).toHaveBeenCalledWith('pw', 10);
-    expect(signJwt).toHaveBeenCalledWith(expect.objectContaining({ userId: 'u1', role: 'GUEST' }));
+    expect(signJwt).toHaveBeenCalledWith(expect.objectContaining({ userId: 'u1', role: 'student' }));
   });
 
   it('fails login with wrong password', async () => {
