@@ -13,6 +13,11 @@ export const createCacheMiddleware = (redis: Redis, options: CacheOptions = {}) 
   return async (req: Request, res: Response, next: NextFunction) => {
     if (req.method !== 'GET') return next();
 
+    // Check if redis is connected/ready
+    if (!redis || !redis.status || redis.status !== 'ready') {
+      return next();
+    }
+
     const key = keyBuilder(req);
     try {
       const cached = await redis.get(key);
@@ -24,8 +29,10 @@ export const createCacheMiddleware = (redis: Redis, options: CacheOptions = {}) 
       const json = res.json.bind(res);
       (res as any).json = async (body: any) => {
         try {
-          await redis.set(key, JSON.stringify(body), 'EX', ttl);
-          res.setHeader('X-Cache', 'MISS-STORE');
+          if (redis.status === 'ready') {
+            await redis.set(key, JSON.stringify(body), 'EX', ttl);
+            res.setHeader('X-Cache', 'MISS-STORE');
+          }
         } catch (_) {
           // ignore cache set errors
         }
@@ -41,10 +48,22 @@ export const createCacheMiddleware = (redis: Redis, options: CacheOptions = {}) 
 
 export const invalidateCacheKeys = async (redis: Redis, patterns: string[]) => {
   if (!patterns.length) return;
-  for (const pattern of patterns) {
-    const keys = await redis.keys(pattern);
-    if (keys.length) {
-      await redis.del(keys);
+  // If Redis is not connected/ready, skip invalidation gracefully
+  if (!redis || !redis.status || redis.status !== 'ready') {
+    return;
+  }
+  try {
+    for (const pattern of patterns) {
+      let cursor = '0';
+      do {
+        const [nextCursor, keys] = await redis.scan(cursor, 'MATCH', pattern, 'COUNT', 100);
+        cursor = nextCursor;
+        if (keys.length > 0) {
+          await redis.del(keys);
+        }
+      } while (cursor !== '0');
     }
+  } catch (err) {
+    console.error('⚠️ Cache invalidation failed:', err instanceof Error ? err.message : err);
   }
 }; 

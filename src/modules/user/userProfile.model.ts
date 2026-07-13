@@ -5,6 +5,7 @@ export type UpdateProfileInput = {
   faculty?: string;
   level?: number;
   semester?: string;
+  university?: string;
 };
 
 export type VerifyFieldInput = {

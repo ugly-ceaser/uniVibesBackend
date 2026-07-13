@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { register, login } from './auth.controller';
+import { register, login, checkUsername } from './auth.controller';
 
 /**
  * @swagger
@@ -161,5 +161,6 @@ export const createAuthRouter = () => {
   const router = Router();
   router.post('/register', register);
   router.post('/login', login);
+  router.post('/check-username', checkUsername);
   return router;
 }; 

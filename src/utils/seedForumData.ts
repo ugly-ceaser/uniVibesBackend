@@ -27,6 +27,9 @@ export async function seedForumData(prisma: PrismaClient) {
     const defaultAdmin = await prisma.user.create({
       data: {
         email: 'admin@gouniversity.edu',
+        username: 'admin',
+        firstname: 'System',
+        lastname: 'Administrator',
         fullname: 'System Administrator',
         password: 'hashedPassword123', // In real app, this would be properly hashed
         role: 'ADMIN',
@@ -61,16 +64,16 @@ export async function seedForumData(prisma: PrismaClient) {
 
   // Sample student users for posts
   const studentUsers = [
-    { email: 'alice.johnson@student.go.edu', fullname: 'Alice Johnson' },
-    { email: 'bob.smith@student.go.edu', fullname: 'Bob Smith' },
-    { email: 'carol.brown@student.go.edu', fullname: 'Carol Brown' },
-    { email: 'david.wilson@student.go.edu', fullname: 'David Wilson' },
-    { email: 'emma.davis@student.go.edu', fullname: 'Emma Davis' },
-    { email: 'frank.miller@student.go.edu', fullname: 'Frank Miller' },
-    { email: 'grace.lee@student.go.edu', fullname: 'Grace Lee' },
-    { email: 'henry.garcia@student.go.edu', fullname: 'Henry Garcia' },
-    { email: 'ivy.martinez@student.go.edu', fullname: 'Ivy Martinez' },
-    { email: 'jack.anderson@student.go.edu', fullname: 'Jack Anderson' },
+    { email: 'alice.johnson@student.go.edu', fullname: 'Alice Johnson', username: 'alice_johnson', firstname: 'Alice', lastname: 'Johnson' },
+    { email: 'bob.smith@student.go.edu', fullname: 'Bob Smith', username: 'bob_smith', firstname: 'Bob', lastname: 'Smith' },
+    { email: 'carol.brown@student.go.edu', fullname: 'Carol Brown', username: 'carol_brown', firstname: 'Carol', lastname: 'Brown' },
+    { email: 'david.wilson@student.go.edu', fullname: 'David Wilson', username: 'david_wilson', firstname: 'David', lastname: 'Wilson' },
+    { email: 'emma.davis@student.go.edu', fullname: 'Emma Davis', username: 'emma_davis', firstname: 'Emma', lastname: 'Davis' },
+    { email: 'frank.miller@student.go.edu', fullname: 'Frank Miller', username: 'frank_miller', firstname: 'Frank', lastname: 'Miller' },
+    { email: 'grace.lee@student.go.edu', fullname: 'Grace Lee', username: 'grace_lee', firstname: 'Grace', lastname: 'Lee' },
+    { email: 'henry.garcia@student.go.edu', fullname: 'Henry Garcia', username: 'henry_garcia', firstname: 'Henry', lastname: 'Garcia' },
+    { email: 'ivy.martinez@student.go.edu', fullname: 'Ivy Martinez', username: 'ivy_martinez', firstname: 'Ivy', lastname: 'Martinez' },
+    { email: 'jack.anderson@student.go.edu', fullname: 'Jack Anderson', username: 'jack_anderson', firstname: 'Jack', lastname: 'Anderson' },
   ];
 
   // Create student users
