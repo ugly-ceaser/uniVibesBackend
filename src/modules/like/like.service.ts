@@ -15,6 +15,10 @@ const validateContentExists = async (prisma: PrismaClient, contentId: string, ty
       const comment = await prisma.comment.findUnique({ where: { id: contentId } });
       if (!comment) throw new Error('Comment not found');
       break;
+    case ContentType.Question:
+      const question = await prisma.question.findUnique({ where: { id: contentId } });
+      if (!question) throw new Error('Question not found');
+      break;
     default:
       throw new Error('Invalid content type');
   }
@@ -35,6 +39,11 @@ const updateLikeCount = async (
         where: { id: contentId },
         data: updateData
       });
+    case ContentType.Question:
+      return await tx.question.update({
+        where: { id: contentId },
+        data: { reactionCount: { [operation]: 1 } }
+      });
     case ContentType.Answer:
       // Note: Answer model doesn't have likesCount in your schema
       // You might need to add it or handle differently
@@ -49,7 +58,7 @@ const updateLikeCount = async (
 };
 
 interface LikeResult {
-  guideItem: GuideItem;
+  contentItem: any;
   like: Likes;
 }
 
@@ -85,7 +94,7 @@ interface PaginatedLikers {
 export const createLikeService = (prisma: PrismaClient) => {
   return {
     // Generic like function for any content type
-    likeContent: async (contentId: string, contentType: ContentType, userId: string): Promise<LikeResult> => {
+    likeContent: async (contentId: string, contentType: ContentType, userId: string): Promise<any> => {
       try {
         // Check if user exists
         const user = await prisma.user.findUnique({
@@ -123,7 +132,7 @@ export const createLikeService = (prisma: PrismaClient) => {
           // Update like count based on content type
           const updatedContent = await updateLikeCount(tx, contentId, contentType, 'increment');
           
-          return { guideItem: updatedContent, like };
+          return { contentItem: updatedContent, like };
         });
 
         return result;
@@ -136,7 +145,7 @@ export const createLikeService = (prisma: PrismaClient) => {
     },
 
     // Generic unlike function for any content type
-    unlikeContent: async (contentId: string, contentType: ContentType, userId: string): Promise<GuideItem> => {
+    unlikeContent: async (contentId: string, contentType: ContentType, userId: string): Promise<any> => {
       try {
         // Validate content exists based on type
         await validateContentExists(prisma, contentId, contentType);

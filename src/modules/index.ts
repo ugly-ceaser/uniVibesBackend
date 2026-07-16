@@ -8,6 +8,8 @@ import { createForumRouter } from './forum/forum.routes';
 import { createGuideRouter } from './guide/guide.routes';
 import { createProfileRouter } from './user/userProfile.routes';
 import { createLikeRouter } from './like/like.routes';
+import { getHomeTrending } from './forum/forum.controller';
+import { attachUserIfPresent } from '../middlewares/authMiddleware';
 
 export const registerRoutes = (app: Application, container: AwilixContainer) => {
   const api = Router();
@@ -18,5 +20,10 @@ export const registerRoutes = (app: Application, container: AwilixContainer) => 
   api.use('/guide', createGuideRouter(container));
   api.use('/user/profile', createProfileRouter(container));
   api.use('/likes', createLikeRouter(container));
+
+  const home = Router();
+  home.get('/trending', attachUserIfPresent, getHomeTrending);
+  api.use('/home', home);
+
   app.use(API_PREFIX, api);
 }; 

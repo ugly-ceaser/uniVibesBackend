@@ -40,6 +40,7 @@ model User {
   supports           CourseSubmissionSupport[]
   auditLogs          CourseAuditLog[]
   enrolledCourses    Course[]           @relation("UserEnrolledCourses")
+  reports            Report[]
 }
 
 model University {
@@ -257,17 +258,26 @@ model Forum {
 }
 
 model Question {
-  id        String        @id @default(uuid())
-  title     String
-  body      String
-  forumId   String?
-  status    Status        @default(Cleared)
-  authorId  String?
-  createdAt DateTime      @default(now())
-  category  ForumCategory @default(GENERAL_DISCUSSION)
-  answers   Answer[]
-  author    User?         @relation(fields: [authorId], references: [id])
-  forum     Forum?        @relation(fields: [forumId], references: [id])
+  id            String        @id @default(uuid())
+  title         String
+  body          String
+  forumId       String?
+  status        Status        @default(Cleared)
+  authorId      String?
+  createdAt     DateTime      @default(now())
+  category      ForumCategory @default(GENERAL_DISCUSSION)
+  answerCount   Int           @default(0)
+  reactionCount Int           @default(0)
+  viewCount     Int           @default(0)
+  department    String?
+  courseCode    String?
+  deletedAt     DateTime?
+  answers       Answer[]
+  author        User?         @relation(fields: [authorId], references: [id])
+  forum         Forum?        @relation(fields: [forumId], references: [id])
+  reports       Report[]
+
+  @@index([status])
 }
 
 model Answer {
@@ -411,6 +421,7 @@ enum ContentType {
   GuideItem
   Answer
   Comment
+  Question
 }
 
 enum Status {
@@ -418,6 +429,7 @@ enum Status {
   Investigated
   Block
   Cleared
+  Deleted
 }
 
 enum LocationStatus {
@@ -469,4 +481,17 @@ model CourseRequest {
   department  String
   createdAt   DateTime @default(now())
   user        User     @relation(fields: [studentId], references: [id])
+}
+
+model Report {
+  id         String   @id @default(uuid())
+  userId     String
+  questionId String
+  reason     String
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
 }

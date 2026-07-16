@@ -1,4 +1,5 @@
 import { PrismaClient, Forum, Question, Answer, Comment } from '@prisma/client';
+import { PostRankingService } from './post-ranking.service';
 
 export const createForumService = (prisma: PrismaClient) => {
   return {
@@ -7,35 +8,36 @@ export const createForumService = (prisma: PrismaClient) => {
       page: number = 1,
       pageSize: number = 20,
       forumId?: string,
-      category?: string
+      category?: string,
+      cursor?: string,
+      userId?: string | null,
+      profileName: 'forum' | 'homeTrending' = 'forum'
     ) => {
-      const skip = (page - 1) * pageSize;
+      const rankingService = new PostRankingService(prisma);
+      
+      // Resolve user's department for relevance boosting if authenticated
+      let userDepartment: string | null = null;
+      if (userId) {
+        const user = await prisma.user.findUnique({
+          where: { id: userId },
+          select: { department: true }
+        });
+        userDepartment = user?.department ?? null;
+      }
 
-      const where: any = {};
-      if (forumId) where.forumId = forumId;
-      if (category) where.category = category;
-
-      const [questions, totalCount] = await Promise.all([
-        prisma.question.findMany({
-          where,
-          orderBy: { createdAt: 'desc' },
-          skip,
-          take: pageSize,
-          include: { 
-            author: {
-              select: { id: true, fullname: true, email: true }
-            },
-            _count: { select: { answers: true } } 
-          }
-        }),
-        prisma.question.count({ where })
-      ]);
+      const { questions, nextCursor } = await rankingService.getRankedQuestions({
+        profileName,
+        userId: userId ?? null,
+        userDepartment,
+        cursorStr: cursor,
+        limit: pageSize,
+        category,
+        forumId
+      });
 
       return {
         questions,
-        totalCount,
-        totalPages: Math.ceil(totalCount / pageSize),
-        currentPage: page
+        nextCursor
       };
     },
 
@@ -73,10 +75,30 @@ export const createForumService = (prisma: PrismaClient) => {
       title: string,
       body: string,
       authorId?: string,
-      forumId?: string
+      forumId?: string,
+      category?: string,
+      courseCode?: string,
+      department?: string
     ) => {
+      let resolvedDepartment = department;
+      if (!resolvedDepartment && authorId) {
+        const author = await prisma.user.findUnique({
+          where: { id: authorId },
+          select: { department: true }
+        });
+        resolvedDepartment = author?.department ?? undefined;
+      }
+
       return prisma.question.create({ 
-        data: { title, body, authorId, forumId },
+        data: { 
+          title, 
+          body, 
+          authorId, 
+          forumId, 
+          category: category as any,
+          courseCode,
+          department: resolvedDepartment
+        },
         include: {
           author: {
             select: { id: true, fullname: true, email: true }
@@ -91,14 +113,21 @@ export const createForumService = (prisma: PrismaClient) => {
       body: string,
       authorId?: string
     ) => {
-      return prisma.answer.create({ 
-        data: { questionId, body, authorId },
-        include: {
-          author: {
-            select: { id: true, fullname: true, email: true }
+      const [answer] = await prisma.$transaction([
+        prisma.answer.create({ 
+          data: { questionId, body, authorId },
+          include: {
+            author: {
+              select: { id: true, fullname: true, email: true }
+            }
           }
-        }
-      });
+        }),
+        prisma.question.update({
+          where: { id: questionId },
+          data: { answerCount: { increment: 1 } }
+        })
+      ]);
+      return answer;
     },
 
     // Create a forum
@@ -187,6 +216,98 @@ export const createForumService = (prisma: PrismaClient) => {
       }
 
       return comment;
+    },
+
+    // Report a question
+    reportQuestion: async (questionId: string, userId: string, reason: string) => {
+      const question = await prisma.question.findUnique({
+        where: { id: questionId },
+        select: { authorId: true }
+      });
+      if (!question) throw new Error('Question not found');
+      if (question.authorId === userId) {
+        throw new Error('You cannot report your own post');
+      }
+
+      const result = await prisma.$transaction(async (tx) => {
+        const report = await tx.report.create({
+          data: {
+            userId,
+            questionId,
+            reason
+          }
+        });
+
+        const count = await tx.report.count({
+          where: { questionId }
+        });
+
+        let statusUpdated = false;
+        if (count >= 3) {
+          await tx.question.update({
+            where: { id: questionId },
+            data: { status: 'Reported' }
+          });
+          statusUpdated = true;
+        }
+
+        return { report, count, statusUpdated };
+      });
+
+      return result;
+    },
+
+    // Soft delete a question
+    softDeleteQuestion: async (questionId: string, userId: string, isAdmin = false) => {
+      const question = await prisma.question.findUnique({
+        where: { id: questionId },
+        select: { authorId: true }
+      });
+      if (!question) throw new Error('Question not found');
+      if (question.authorId !== userId && !isAdmin) {
+        throw new Error('Permission denied to delete this question');
+      }
+
+      return prisma.question.update({
+        where: { id: questionId },
+        data: {
+          status: 'Deleted',
+          deletedAt: new Date()
+        }
+      });
+    },
+
+    // List all reported questions (Admin only)
+    listReportedQuestions: async () => {
+      return prisma.question.findMany({
+        where: { status: 'Reported' },
+        include: {
+          author: {
+            select: { id: true, fullname: true, email: true }
+          },
+          reports: {
+            include: {
+              user: {
+                select: { id: true, fullname: true, email: true }
+              }
+            }
+          }
+        },
+        orderBy: { createdAt: 'desc' }
+      });
+    },
+
+    // Restore a reported question (Admin only)
+    restoreQuestion: async (questionId: string) => {
+      return prisma.$transaction([
+        prisma.question.update({
+          where: { id: questionId },
+          data: { status: 'Cleared' }
+        }),
+        prisma.report.deleteMany({
+          where: { questionId }
+        })
+      ]);
     }
   };
 };

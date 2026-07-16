@@ -8,7 +8,10 @@ export type CacheOptions = {
 
 export const createCacheMiddleware = (redis: Redis, options: CacheOptions = {}) => {
   const ttl = options.ttlSeconds ?? 300;
-  const keyBuilder = options.key ?? ((req) => `cache:${req.method}:${req.originalUrl}`);
+  const keyBuilder = options.key ?? ((req) => {
+    const userId = (req as any).user?.id ? `:${(req as any).user.id}` : '';
+    return `cache:${req.method}:${req.originalUrl}${userId}`;
+  });
 
   return async (req: Request, res: Response, next: NextFunction) => {
     if (req.method !== 'GET') return next();
