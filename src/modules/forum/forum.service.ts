@@ -43,11 +43,17 @@ export const createForumService = (prisma: PrismaClient) => {
 
     // Get a single question with all its answers
     getQuestionWithAnswers: async (questionId: string) => {
+      // Also increment view count atomically
+      await prisma.question.update({
+        where: { id: questionId },
+        data: { viewCount: { increment: 1 } }
+      }).catch(() => null);
+
       return prisma.question.findUnique({
         where: { id: questionId },
         include: {
           author: {
-            select: { id: true, fullname: true, email: true }
+            select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
           },
           forum: {
             select: { id: true, name: true }
@@ -56,7 +62,7 @@ export const createForumService = (prisma: PrismaClient) => {
             orderBy: { createdAt: 'asc' },
             include: {
               author: {
-                select: { id: true, fullname: true, email: true }
+                select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
               },
               _count: {
                 select: { comments: true }
@@ -101,7 +107,7 @@ export const createForumService = (prisma: PrismaClient) => {
         },
         include: {
           author: {
-            select: { id: true, fullname: true, email: true }
+            select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
           }
         }
       });
@@ -118,7 +124,7 @@ export const createForumService = (prisma: PrismaClient) => {
           data: { questionId, body, authorId },
           include: {
             author: {
-              select: { id: true, fullname: true, email: true }
+              select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
             }
           }
         }),
@@ -146,14 +152,22 @@ export const createForumService = (prisma: PrismaClient) => {
         where: { answerId, parentId: null },
         orderBy: { createdAt: 'asc' },
         include: {
-          author: true,
+          author: {
+            select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
+          },
           replies: {
             orderBy: { createdAt: 'asc' },
             include: {
-              author: true,
+              author: {
+                select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
+              },
               replies: {
                 orderBy: { createdAt: 'asc' },
-                include: { author: true }
+                include: {
+                  author: {
+                    select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
+                  }
+                }
               }
             }
           }
@@ -195,7 +209,7 @@ export const createForumService = (prisma: PrismaClient) => {
         },
         include: {
           author: {
-            select: { id: true, fullname: true, email: true }
+            select: { id: true, fullname: true, email: true, department: true, faculty: true, level: true, username: true }
           }
         }
       });

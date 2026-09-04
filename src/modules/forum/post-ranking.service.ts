@@ -87,6 +87,9 @@ export class PostRankingService {
           u.fullname as "authorName",
           u.email as "authorEmail",
           u."avatarUrl" as "authorAvatar",
+          u.department as "authorDepartment",
+          u.faculty as "authorFaculty",
+          u.level as "authorLevel",
           f.name as "forumName",
           -- Relevance boost based on course enrollment or department match
           (CASE 
@@ -145,7 +148,10 @@ export class PostRankingService {
         id: q.authorId,
         fullname: q.authorName || 'Anonymous',
         email: q.authorEmail || '',
-        avatarUrl: q.authorAvatar || null
+        avatarUrl: q.authorAvatar || null,
+        department: q.authorDepartment || null,
+        faculty: q.authorFaculty || null,
+        level: q.authorLevel || null
       } : null,
       forum: q.forumId ? {
         id: q.forumId,
