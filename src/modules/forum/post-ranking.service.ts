@@ -163,9 +163,9 @@ export class PostRankingService {
       score: q.score
     }));
 
-    // Derive nextCursor strictly from organic N-th organic post before diversity injection
+    // Derive nextCursor strictly from organic N-th organic post if full page was returned
     let nextCursor: string | null = null;
-    if (formattedQuestions.length > 0) {
+    if (formattedQuestions.length === limit) {
       const lastOrganic = formattedQuestions[formattedQuestions.length - 1];
       nextCursor = encodeCursor({
         score: lastOrganic.score,
