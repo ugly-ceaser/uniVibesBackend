@@ -110,6 +110,79 @@ export async function seedUniversityData(prisma: PrismaClient) {
         data: { programmeId: prog.id, level: lvl },
       });
 
+      // Seed courses for Computer Science (compSciProg) across all levels and semesters
+      if (prog.id === compSciProg.id) {
+        if (lvl === 100) {
+          await prisma.course.createMany({
+            data: [
+              // 100 Level - 1st Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC101', title: 'Introduction to Computer Science', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'COS101', title: 'Introduction to Computing Systems', creditUnit: 2, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'MTH101', title: 'Elementary Mathematics I (Algebra & Trig)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'PHY101', title: 'General Physics I (Mechanics)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'GST101', title: 'Use of English & Communication Skills I', creditUnit: 2, courseType: 'General', status: 'ACTIVE' },
+              // 100 Level - 2nd Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC102', title: 'Introduction to Problem Solving & Python', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC104', title: 'Discrete Mathematics for Computing', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'MTH102', title: 'Elementary Mathematics II (Calculus)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'PHY102', title: 'General Physics II (Electricity & Magnetism)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'GST102', title: 'Use of English & Communication Skills II', creditUnit: 2, courseType: 'General', status: 'ACTIVE' },
+            ],
+          });
+        } else if (lvl === 200) {
+          await prisma.course.createMany({
+            data: [
+              // 200 Level - 1st Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC201', title: 'Computer Programming I (Java)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC203', title: 'Data Structures & Algorithms', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC205', title: 'Digital Logic & Computer Architecture', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC207', title: 'Linear Algebra for Computing', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'GST201', title: 'Nigerian Peoples & Culture', creditUnit: 2, courseType: 'General', status: 'ACTIVE' },
+              // 200 Level - 2nd Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC202', title: 'Object-Oriented Programming (C++)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC204', title: 'Database Management Systems I', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC206', title: 'Operating Systems Concepts', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC208', title: 'Systems Analysis & Design', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'GST202', title: 'Peace Studies & Conflict Resolution', creditUnit: 2, courseType: 'General', status: 'ACTIVE' },
+            ],
+          });
+        } else if (lvl === 300) {
+          await prisma.course.createMany({
+            data: [
+              // 300 Level - 1st Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC301', title: 'Software Engineering Principles', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC303', title: 'Artificial Intelligence & Expert Systems', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC305', title: 'Computer Networks & Data Communication', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC307', title: 'Web Technologies & Development', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC309', title: 'Theory of Computation & Automata', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              // 300 Level - 2nd Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC302', title: 'Advanced Software Engineering', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC304', title: 'Database Management Systems II (NoSQL)', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC306', title: 'Mobile Application Development', creditUnit: 3, courseType: 'Elective', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC308', title: 'Compiler Construction', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC399', title: 'Industrial Training / SIWES', creditUnit: 6, courseType: 'Core', status: 'ACTIVE' },
+            ],
+          });
+        } else if (lvl === 400) {
+          await prisma.course.createMany({
+            data: [
+              // 400 Level - 1st Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC401', title: 'Final Year Project I', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC403', title: 'Computer Security & Cryptography', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC405', title: 'Cloud Computing & Distributed Systems', creditUnit: 3, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC407', title: 'Data Mining & Machine Learning', creditUnit: 3, courseType: 'Elective', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem1.id, courseCode: 'CSC409', title: 'Parallel & High Performance Computing', creditUnit: 3, courseType: 'Elective', status: 'ACTIVE' },
+              // 400 Level - 2nd Semester
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC402', title: 'Final Year Project II', creditUnit: 6, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC404', title: 'Human-Computer Interaction (HCI)', creditUnit: 2, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC406', title: 'Ethics & Professional Practice in IT', creditUnit: 2, courseType: 'Core', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC408', title: 'Deep Learning & Neural Networks', creditUnit: 3, courseType: 'Elective', status: 'ACTIVE' },
+              { universityId: gouni.id, facultyId: gouniFacit.id, departmentId: gouniCSDept.id, programmeId: prog.id, levelId: level.id, semesterId: sem2.id, courseCode: 'CSC410', title: 'Emerging Tech & Quantum Computing', creditUnit: 2, courseType: 'Elective', status: 'ACTIVE' },
+            ],
+          });
+        }
+      }
+
       // Seed mock courses for Level 100 & 200 of Software Engineering
       if (prog.id === softEngProg.id && lvl === 100) {
         await prisma.course.createMany({

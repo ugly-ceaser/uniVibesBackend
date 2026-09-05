@@ -9,7 +9,12 @@ import {
   addAnswer,
   fetchComments,
   postComment,
-  createForum
+  createForum,
+  reportQuestion,
+  deleteQuestion,
+  getReportedQuestions,
+  restoreQuestion,
+  getCategories
 } from './forum.controller';
 
 /**
@@ -508,11 +513,24 @@ export const createForumRouter = (container: AwilixContainer) => {
   // Questions
   router.get(
     '/questions',
+    attachUserIfPresent,
+    createCacheMiddleware(redis, { ttlSeconds: 300 }),
+    listQuestions
+  );
+  router.get(
+    '/categories',
+    createCacheMiddleware(redis, { ttlSeconds: 600 }),
+    getCategories
+  );
+  router.get(
+    '/posts',
+    attachUserIfPresent,
     createCacheMiddleware(redis, { ttlSeconds: 300 }),
     listQuestions
   );
   router.get(
     '/questions/:id',
+    attachUserIfPresent,
     createCacheMiddleware(redis, { ttlSeconds: 300 }),
     getQuestionById
   );
@@ -545,12 +563,42 @@ export const createForumRouter = (container: AwilixContainer) => {
   );
 
   router.post(
-  '/forums',
-  attachUserIfPresent,
-  requireAuth,
-  authorizeRoles('ADMIN'),
-  createForum
-);
+    '/forums',
+    attachUserIfPresent,
+    requireAuth,
+    authorizeRoles('ADMIN'),
+    createForum
+  );
+
+  // Report and Soft-Delete Questions
+  router.post(
+    '/questions/:id/report',
+    attachUserIfPresent,
+    requireAuth,
+    reportQuestion
+  );
+  router.delete(
+    '/questions/:id',
+    attachUserIfPresent,
+    requireAuth,
+    deleteQuestion
+  );
+
+  // Admin moderation endpoints
+  router.get(
+    '/admin/reports',
+    attachUserIfPresent,
+    requireAuth,
+    authorizeRoles('ADMIN'),
+    getReportedQuestions
+  );
+  router.post(
+    '/admin/questions/:id/restore',
+    attachUserIfPresent,
+    requireAuth,
+    authorizeRoles('ADMIN'),
+    restoreQuestion
+  );
 
   return router;
 };

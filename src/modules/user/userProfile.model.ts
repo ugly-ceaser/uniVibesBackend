@@ -1,11 +1,19 @@
 export type UpdateProfileInput = {
   fullName?: string;
-  phone?: string;
-  department?: string;
-  faculty?: string;
-  level?: number;
-  semester?: string;
-  university?: string;
+  fullname?: string;
+  firstname?: string;
+  lastname?: string;
+  middlename?: string | null;
+  phone?: string | null;
+  regNumber?: string | null;
+  nin?: string | null;
+  department?: string | null;
+  faculty?: string | null;
+  level?: number | string | null;
+  semester?: string | null;
+  university?: string | null;
+  avatarUrl?: string | null;
+  programme?: string | null;
 };
 
 export type VerifyFieldInput = {
@@ -14,3 +22,4 @@ export type VerifyFieldInput = {
   nin?: boolean;
   regNumber?: boolean;
 };
+

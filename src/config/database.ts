@@ -5,13 +5,24 @@ let prisma: PrismaClient | null = null;
 
 export const createPrismaClient = () => {
   if (!prisma) {
+    let formattedUrl = env.databaseUrl;
+    try {
+      const url = new URL(env.databaseUrl);
+      if (env.nodeEnv === 'production' && !url.searchParams.has('sslmode')) {
+        url.searchParams.set('sslmode', 'require');
+      }
+      if (!url.searchParams.has('connection_limit')) {
+        url.searchParams.set('connection_limit', String(env.databaseConnectionLimit));
+      }
+      formattedUrl = url.toString();
+    } catch {
+      formattedUrl = env.databaseUrl;
+    }
+
     prisma = new PrismaClient({
       datasources: {
         db: {
-          // Ensure SSL and limit connections dynamically
-          url: env.databaseUrl.includes('sslmode')
-            ? `${env.databaseUrl}&connection_limit=${env.databaseConnectionLimit}`
-            : `${env.databaseUrl}?sslmode=require&connection_limit=${env.databaseConnectionLimit}`
+          url: formattedUrl
         }
       },
       log: env.nodeEnv === 'production' ? [] : ['query', 'info', 'warn', 'error']

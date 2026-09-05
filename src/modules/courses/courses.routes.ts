@@ -2,6 +2,7 @@ import { Router } from 'express';
 import type { AwilixContainer } from 'awilix';
 import { createCacheMiddleware } from '../../middlewares/cacheMiddleware';
 import { attachUserIfPresent, requireAuth, authorizeRoles } from '../../middlewares/authMiddleware';
+import { proxyToRagBackend } from '../../middlewares/ragProxy';
 import {
   // University hierarchy browser
   listUniversities,
@@ -172,6 +173,13 @@ export const createCoursesRouter = (container: AwilixContainer) => {
     authorizeRoles(...ALL_AUTH),
     unenrollCourse
   );
+
+  // ─── RAG / AI Microservice Proxy Routes ─────────────────────────────
+  router.use('/:courseId/materials', proxyToRagBackend);
+  router.use('/:courseId/ask', proxyToRagBackend);
+  router.use('/:courseId/history', proxyToRagBackend);
+  router.use('/:courseId/gaps', proxyToRagBackend);
+  router.use('/:courseId/chats/session', proxyToRagBackend);
 
   router.get('/:id',
     attachUserIfPresent,
