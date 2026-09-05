@@ -135,6 +135,29 @@ export const createLikeService = (prisma: PrismaClient) => {
           return { contentItem: updatedContent, like };
         });
 
+        if (contentType === ContentType.Question) {
+          try {
+            const question = await prisma.question.findUnique({
+              where: { id: contentId },
+              select: { authorId: true, title: true }
+            });
+            if (question && question.authorId && question.authorId !== userId) {
+              const likerName = user.fullname || user.username || 'Someone';
+              await prisma.notification.create({
+                data: {
+                  userId: question.authorId,
+                  title: 'New Like on Your Post',
+                  body: `${likerName} liked your post: "${question.title.substring(0, 50)}${question.title.length > 50 ? '...' : ''}"`,
+                  type: 'FORUM_LIKE',
+                  targetUrl: `/forum?questionId=${contentId}`
+                }
+              });
+            }
+          } catch (err) {
+            console.error('Failed to create notification for like:', err);
+          }
+        }
+
         return result;
       } catch (error) {
         if (error instanceof Error) {

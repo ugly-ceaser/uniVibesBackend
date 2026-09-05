@@ -38,26 +38,36 @@ export async function seedForumData(prisma: PrismaClient) {
     });
     
     for (const category of forumCategories) {
-      const forum = await prisma.forum.create({
-        data: {
-          name: category.name,
-          creatorId: defaultAdmin.id,
-          verificationStatus: true,
-          visibiltyStatus: true,
-        }
+      let forum = await prisma.forum.findFirst({
+        where: { name: category.name }
       });
+      if (!forum) {
+        forum = await prisma.forum.create({
+          data: {
+            name: category.name,
+            creatorId: defaultAdmin.id,
+            verificationStatus: true,
+            visibiltyStatus: true,
+          }
+        });
+      }
       forums.push(forum);
     }
   } else {
     for (const category of forumCategories) {
-      const forum = await prisma.forum.create({
-        data: {
-          name: category.name,
-          creatorId: adminUser.id,
-          verificationStatus: true,
-          visibiltyStatus: true,
-        }
+      let forum = await prisma.forum.findFirst({
+        where: { name: category.name }
       });
+      if (!forum) {
+        forum = await prisma.forum.create({
+          data: {
+            name: category.name,
+            creatorId: adminUser.id,
+            verificationStatus: true,
+            visibiltyStatus: true,
+          }
+        });
+      }
       forums.push(forum);
     }
   }

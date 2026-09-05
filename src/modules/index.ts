@@ -8,11 +8,14 @@ import { createForumRouter } from './forum/forum.routes';
 import { createGuideRouter } from './guide/guide.routes';
 import { createProfileRouter } from './user/userProfile.routes';
 import { createLikeRouter } from './like/like.routes';
+import { createNotificationRouter } from './notification/notification.routes';
 import { getHomeTrending } from './forum/forum.controller';
 import { attachUserIfPresent } from '../middlewares/authMiddleware';
+import { proxyToRagBackend } from '../middlewares/ragProxy';
 
 export const registerRoutes = (app: Application, container: AwilixContainer) => {
   const api = Router();
+  api.use('/ai', proxyToRagBackend);
   api.use('/auth', createAuthRouter());
   api.use('/courses', createCoursesRouter(container));
   api.use('/map', createMapRouter(container));
@@ -20,6 +23,7 @@ export const registerRoutes = (app: Application, container: AwilixContainer) => 
   api.use('/guide', createGuideRouter(container));
   api.use('/user/profile', createProfileRouter(container));
   api.use('/likes', createLikeRouter(container));
+  api.use('/notifications', createNotificationRouter(container));
 
   const home = Router();
   home.get('/trending', attachUserIfPresent, getHomeTrending);

@@ -133,6 +133,30 @@ export const createForumService = (prisma: PrismaClient) => {
           data: { answerCount: { increment: 1 } }
         })
       ]);
+
+      if (questionId && authorId) {
+        try {
+          const question = await prisma.question.findUnique({
+            where: { id: questionId },
+            select: { authorId: true, title: true }
+          });
+          if (question && question.authorId && question.authorId !== authorId) {
+            const authorName = answer.author?.fullname || answer.author?.username || 'Someone';
+            await prisma.notification.create({
+              data: {
+                userId: question.authorId,
+                title: 'New Answer on Your Question',
+                body: `${authorName} answered: "${question.title.substring(0, 50)}${question.title.length > 50 ? '...' : ''}"`,
+                type: 'FORUM_ANSWER',
+                targetUrl: `/forum?questionId=${questionId}`
+              }
+            });
+          }
+        } catch (err) {
+          console.error('Failed to create notification for answer:', err);
+        }
+      }
+
       return answer;
     },
 

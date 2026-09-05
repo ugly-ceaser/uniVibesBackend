@@ -16,6 +16,7 @@ model User {
   regNumber          String?       @unique
   department         String?
   faculty            String?
+  programme          String?
   level              Int?
   verificationStatus Boolean?      @default(false)
   status             Status        @default(Cleared)
@@ -41,6 +42,7 @@ model User {
   auditLogs          CourseAuditLog[]
   enrolledCourses    Course[]           @relation("UserEnrolledCourses")
   reports            Report[]
+  notifications      Notification[]
 }
 
 model University {
@@ -494,4 +496,27 @@ model Report {
   question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@unique([userId, questionId])
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  title     String
+  body      String
+  type      NotificationType @default(SYSTEM)
+  read      Boolean          @default(false)
+  targetUrl String?
+  createdAt DateTime         @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
+  @@index([userId, createdAt])
+}
+
+enum NotificationType {
+  FORUM_ANSWER
+  FORUM_LIKE
+  COURSE_APPROVED
+  SYSTEM
 }

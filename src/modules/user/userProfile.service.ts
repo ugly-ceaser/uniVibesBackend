@@ -10,11 +10,73 @@ export const createProfileService = (prisma: PrismaClient) => {
       });
     },
 
-    // Update user profile
+    // Update user profile safely mapping fields to Prisma schema
     updateProfile: async (userId: string, input: UpdateProfileInput): Promise<User> => {
+      const data: Record<string, any> = {};
+
+      const fullName = input.fullname ?? input.fullName;
+      if (fullName !== undefined) {
+        const trimmed = fullName.trim();
+        data.fullname = trimmed;
+        if (trimmed) {
+          const parts = trimmed.split(/\s+/);
+          data.firstname = parts[0];
+          data.lastname = parts.length > 1 ? parts[parts.length - 1] : parts[0];
+          data.middlename = parts.length > 2 ? parts.slice(1, -1).join(' ') : null;
+        }
+      }
+
+      if (input.phone !== undefined) {
+        data.phone = input.phone?.trim() || null;
+      }
+
+      if (input.regNumber !== undefined) {
+        data.regNumber = input.regNumber?.trim() || null;
+      }
+
+      if (input.nin !== undefined) {
+        data.nin = input.nin?.trim() || null;
+      }
+
+      if (input.university !== undefined) {
+        data.university = input.university?.trim() || null;
+      }
+
+      if (input.faculty !== undefined) {
+        data.faculty = input.faculty?.trim() || null;
+      }
+
+      if (input.department !== undefined) {
+        data.department = input.department?.trim() || null;
+      }
+
+      if (input.programme !== undefined) {
+        data.programme = input.programme?.trim() || null;
+      }
+
+      if (input.level !== undefined) {
+        if (input.level === null || input.level === '') {
+          data.level = null;
+        } else {
+          const parsed =
+            typeof input.level === 'number'
+              ? input.level
+              : parseInt(String(input.level), 10);
+          data.level = Number.isFinite(parsed) ? parsed : null;
+        }
+      }
+
+      if (input.semester !== undefined) {
+        data.semester = input.semester?.trim() || null;
+      }
+
+      if (input.avatarUrl !== undefined) {
+        data.avatarUrl = input.avatarUrl?.trim() || null;
+      }
+
       return prisma.user.update({
         where: { id: userId },
-        data: input,
+        data,
       });
     },
 
