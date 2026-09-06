@@ -1,31 +1,36 @@
 import { Request, Response } from 'express';
 import http from 'http';
+import https from 'https';
 import { URL } from 'url';
-
-const RAG_BACKEND_URL = process.env.RAG_BACKEND_URL || 'http://127.0.0.1:8000';
 
 export const proxyToRagBackend = (req: Request, res: Response) => {
   try {
-    const targetUrl = new URL(req.originalUrl, RAG_BACKEND_URL);
-    
+    const ragBackendUrl = process.env.RAG_BACKEND_URL || 'http://127.0.0.1:8000';
+    const targetUrl = new URL(req.originalUrl, ragBackendUrl);
+    const isHttps = targetUrl.protocol === 'https:';
+    const transport = isHttps ? https : http;
+
     // Remove /api/v1 prefix if present for target matching
     let targetPath = targetUrl.pathname;
     if (targetPath.startsWith('/api/v1')) {
       targetPath = targetPath.replace('/api/v1', '');
     }
 
+    const headers = { ...req.headers };
+    delete headers.host;
+
     const options: http.RequestOptions = {
       hostname: targetUrl.hostname,
-      port: targetUrl.port || (targetUrl.protocol === 'https:' ? 443 : 80),
+      port: targetUrl.port || (isHttps ? 443 : 80),
       path: targetPath + targetUrl.search,
       method: req.method,
       headers: {
-        ...req.headers,
-        host: `${targetUrl.hostname}:${targetUrl.port || 8000}`,
+        ...headers,
+        host: targetUrl.host,
       },
     };
 
-    const proxyReq = http.request(options, (proxyRes) => {
+    const proxyReq = transport.request(options, (proxyRes) => {
       res.writeHead(proxyRes.statusCode || 500, proxyRes.headers);
       proxyRes.pipe(res, { end: true });
     });
