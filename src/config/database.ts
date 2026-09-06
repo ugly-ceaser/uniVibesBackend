@@ -44,7 +44,9 @@ export const createPrismaClient = () => {
       }
     };
 
-    connectWithRetry();
+    if (env.nodeEnv !== 'test') {
+      connectWithRetry();
+    }
   }
 
   return prisma!;
