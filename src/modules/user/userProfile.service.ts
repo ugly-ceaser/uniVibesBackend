@@ -1,17 +1,26 @@
 import { PrismaClient, User } from '@prisma/client';
 import { UpdateProfileInput, VerifyFieldInput } from './userProfile.model';
 
+export type SafeUser = Omit<User, 'password'>;
+
+const sanitizeUser = (user: User | null): SafeUser | null => {
+  if (!user) return null;
+  const { password, ...safeUser } = user;
+  return safeUser;
+};
+
 export const createProfileService = (prisma: PrismaClient) => {
   return {
     // Get user profile by user ID
-    getProfile: async (userId: string): Promise<User | null> => {
-      return prisma.user.findUnique({
+    getProfile: async (userId: string): Promise<SafeUser | null> => {
+      const user = await prisma.user.findUnique({
         where: { id: userId },
       });
+      return sanitizeUser(user);
     },
 
     // Update user profile safely mapping fields to Prisma schema
-    updateProfile: async (userId: string, input: UpdateProfileInput): Promise<User> => {
+    updateProfile: async (userId: string, input: UpdateProfileInput): Promise<SafeUser> => {
       const data: Record<string, any> = {};
 
       const fullName = input.fullname ?? input.fullName;
@@ -74,15 +83,16 @@ export const createProfileService = (prisma: PrismaClient) => {
         data.avatarUrl = input.avatarUrl?.trim() || null;
       }
 
-      return prisma.user.update({
+      const updated = await prisma.user.update({
         where: { id: userId },
         data,
       });
+      return sanitizeUser(updated)!;
     },
 
     // Verify profile: your Prisma schema has a single boolean `verificationStatus` on User.
     // We map any provided flags to that single boolean (true if any true and none false; false if any false).
-    verifyField: async (userId: string, input: VerifyFieldInput): Promise<User> => {
+    verifyField: async (userId: string, input: VerifyFieldInput): Promise<SafeUser> => {
       const providedValues = Object.values(input).filter((v): v is boolean => typeof v === 'boolean');
 
       if (providedValues.length === 0) {
@@ -99,10 +109,11 @@ export const createProfileService = (prisma: PrismaClient) => {
         throw new Error('Invalid verification flags');
       }
 
-      return prisma.user.update({
+      const updated = await prisma.user.update({
         where: { id: userId },
         data: { verificationStatus: nextStatus },
       });
+      return sanitizeUser(updated)!;
     },
   };
 };

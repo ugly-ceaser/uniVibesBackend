@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { register, login, checkUsername } from './auth.controller';
+import { register, login, checkUsername, forgotPassword, verifyResetOtp, resetPassword } from './auth.controller';
 
 /**
  * @swagger
@@ -162,5 +162,8 @@ export const createAuthRouter = () => {
   router.post('/register', register);
   router.post('/login', login);
   router.post('/check-username', checkUsername);
+  router.post('/forgot-password', forgotPassword);
+  router.post('/verify-reset-otp', verifyResetOtp);
+  router.post('/reset-password', resetPassword);
   return router;
-}; 
+};

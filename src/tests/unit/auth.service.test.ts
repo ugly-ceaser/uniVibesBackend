@@ -59,4 +59,18 @@ describe('AuthService', () => {
 
     await expect(service.login({ email: 'a@b.com', password: 'bad' })).rejects.toThrow('Invalid credentials');
   });
+
+  it('rejects administrator role during public registration', async () => {
+    mockPrisma.user.findUnique.mockResolvedValue(null);
+    const service = createAuthService(mockPrisma);
+
+    await expect(service.register({
+      email: 'admin@example.com',
+      username: 'adminuser',
+      firstname: 'Admin',
+      lastname: 'User',
+      password: 'pw',
+      role: 'ADMIN' as any
+    })).rejects.toThrow('Administrator registration is not allowed through public signup');
+  });
 });
