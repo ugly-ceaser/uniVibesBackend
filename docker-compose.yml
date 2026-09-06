@@ -1,21 +1,5 @@
 version: '3.9'
 services:
-  db:
-    image: pgvector/pgvector:pg15
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: uniVibes
-    ports:
-      - "5433:5432"
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   cache:
     image: redis:7-alpine
     ports:
@@ -29,20 +13,15 @@ services:
   app:
     build: .
     depends_on:
-      db:
-        condition: service_healthy
       cache:
         condition: service_healthy
     environment:
-      NODE_ENV: production
-      PORT: 3000
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/app
-      REDIS_URL: redis://cache:6379
-      JWT_SECRET: change_me
-      LOG_LEVEL: info
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: ${PORT:-3000}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:-redis://cache:6379}
+      JWT_SECRET: ${JWT_SECRET}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
     ports:
       - "3000:3000"
     command: ["node", "dist/server.js"]
-
-volumes:
-  db_data: 

@@ -22,7 +22,7 @@ export const getUserProfile = asyncHandler(async (req: Request, res: Response) =
   const user = await service.getProfile(userId);
 
   if (!user) {
-    return res.status(404).json({ status: 404, message: 'User not found', requestId: (req as any).id });
+    return res.status(401).json({ status: 401, message: 'Account no longer available. Please log in again.', requestId: (req as any).id });
   }
 
   res.status(200).json({ data: user });

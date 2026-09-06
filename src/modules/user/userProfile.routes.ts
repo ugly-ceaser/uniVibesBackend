@@ -191,8 +191,8 @@ export const createProfileRouter = (container: AwilixContainer) => {
   // Update current user's profile
   router.put('/', requireAuth, updateUserProfile);
 
-  // Verify a specific field (email, phone, NIN, regNumber)
-  router.patch('/verify', requireAuth, verifyProfileField);
+  // Verify a specific field (email, phone, NIN, regNumber) - ADMIN only
+  router.patch('/verify', requireAuth, authorizeRoles('ADMIN', 'admin'), verifyProfileField);
 
   return router;
 };
