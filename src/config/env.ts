@@ -22,6 +22,9 @@ const envSchema = z.object({
   RESPONSE_LOG_LEVEL: z.enum(['simple', 'detailed', 'none']).default('detailed'),
   CORS_ORIGINS: z.string().default('*').transform((val) => val.split(',')),
   DATABASE_CONNECTION_LIMIT: z.coerce.number().default(5),
+  AI_SERVICE_URL: z.string().default('https://api.openai.com/v1'),
+  AI_SERVICE_API_KEY: z.string().optional().default(''),
+  AI_CACHE_TIMEOUT_MS: z.coerce.number().default(1800000),
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -53,4 +56,7 @@ export const env = {
   responseLogLevel: validatedEnv.RESPONSE_LOG_LEVEL,
   corsOrigins: validatedEnv.CORS_ORIGINS,
   databaseConnectionLimit: validatedEnv.DATABASE_CONNECTION_LIMIT,
+  aiServiceUrl: validatedEnv.AI_SERVICE_URL,
+  aiServiceApiKey: validatedEnv.AI_SERVICE_API_KEY,
+  aiCacheTimeoutMs: validatedEnv.AI_CACHE_TIMEOUT_MS,
 }; 

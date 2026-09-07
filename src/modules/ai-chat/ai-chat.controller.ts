@@ -50,11 +50,8 @@ export const courseAIChat = asyncHandler(async (req: Request, res: Response) => 
   let courseContext = context;
   if (!context.courseCode || !context.courseName) {
     try {
-      // Try to get course by code first, then by ID
-      let course = await service.getCourseByCode(courseId);
-      if (!course) {
-        course = await service.getCourseById(courseId);
-      }
+      // Get course with full details
+      const course = await service.getCourseWithFullDetails(courseId);
       
       if (!course) {
         return res.status(404).json({
@@ -74,8 +71,8 @@ export const courseAIChat = asyncHandler(async (req: Request, res: Response) => 
         courseName: course.name,
         instructor: context.instructor || course.coordinator,
         outline: context.outline || course.outline || [],
-        description: context.description || `${course.name} - ${course.unitLoad} units, Semester ${course.semester}`,
-        assessment: context.assessment || [
+        description: context.description || course.description,
+        assessment: context.assessment || course.assessment || [
           { type: "Assignments", percentage: 30 },
           { type: "Tests", percentage: 30 },
           { type: "Final Exam", percentage: 40 }
@@ -396,12 +393,7 @@ export const getCourseOutline = asyncHandler(async (req: Request, res: Response)
   }
 
   try {
-    // Try by ID first, then by code
-    let course = await service.getCourseById(courseId);
-    
-    if (!course) {
-      course = await service.getCourseByCode(courseId);
-    }
+    const course = await service.getCourseWithFullDetails(courseId);
 
     if (!course) {
       return res.status(404).json({
@@ -419,7 +411,7 @@ export const getCourseOutline = asyncHandler(async (req: Request, res: Response)
       unitLoad: course.unitLoad,
       semester: course.semester,
       outline: course.outline || [],
-      description: `${course.name} - ${course.unitLoad} units, Semester ${course.semester}`
+      description: course.description
     };
     
     res.status(200).json({
@@ -643,8 +635,8 @@ export const getCourseChatSessions = asyncHandler(async (req: Request, res: Resp
       data: {
         course: course ? {
           id: course.id,
-          name: course.name,
-          code: course.code
+          name: (course as any).name || (course as any).title,
+          code: (course as any).code || (course as any).courseCode
         } : null,
         sessions: sessions
       },
@@ -690,7 +682,7 @@ export const getOrCreateCourseChatSession = asyncHandler(async (req: Request, re
 
   try {
     // Get course information
-    const course = await service.getCourseById(courseId);
+    const course = await service.getCourseWithFullDetails(courseId);
     
     if (!course) {
       return res.status(404).json({

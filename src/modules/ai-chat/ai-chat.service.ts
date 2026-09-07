@@ -83,9 +83,15 @@ export const createAIChatService = (prisma: PrismaClient) => {
     // Enhanced: Get or create active session for a course (from requirements)
     getCourseActiveSession: async (courseId: string, studentId: string): Promise<ActiveSessionResponse> => {
       // First, try to find course by code (most common), then by ID as fallback
-      let course = await prisma.course.findFirst({ where: { code: courseId } });
+      let course: any = await prisma.course.findFirst({
+        where: { courseCode: courseId },
+        include: { versions: { orderBy: { revision: 'desc' }, take: 1 } }
+      });
       if (!course) {
-        course = await prisma.course.findUnique({ where: { id: courseId } });
+        course = await prisma.course.findUnique({
+          where: { id: courseId },
+          include: { versions: { orderBy: { revision: 'desc' }, take: 1 } }
+        });
       }
       const actualCourseId = course?.id || courseId;
       
@@ -115,12 +121,12 @@ export const createAIChatService = (prisma: PrismaClient) => {
             studentId,
             courseId: course.id, // Always use the actual course ID
             sessionType: 'course',
-            title: `${course.code} Chat Session`,
+            title: `${course.courseCode} Chat Session`,
             metadata: {
-              courseCode: course.code,
-              courseName: course.name,
-              outline: course.outline,
-              instructor: course.coordinator
+              courseCode: course.courseCode,
+              courseName: course.title,
+              outline: course.versions?.[0]?.outline || [],
+              instructor: course.coordinator || null
             }
           },
           include: {
@@ -154,9 +160,15 @@ export const createAIChatService = (prisma: PrismaClient) => {
     getCourseChatSessions: async (courseId: string, studentId: string): Promise<CourseChatsResponse> => {
       // Get course info
       // Try by code first, then by ID
-      let course = await prisma.course.findFirst({ where: { code: courseId } });
+      let course: any = await prisma.course.findFirst({
+        where: { courseCode: courseId },
+        include: { semester: true }
+      });
       if (!course) {
-        course = await prisma.course.findUnique({ where: { id: courseId } });
+        course = await prisma.course.findUnique({
+          where: { id: courseId },
+          include: { semester: true }
+        });
       }
       
       if (!course) {
@@ -167,7 +179,7 @@ export const createAIChatService = (prisma: PrismaClient) => {
       const sessions = await prisma.chatSession.findMany({
         where: {
           studentId,
-          courseId,
+          courseId: course.id,
           status: 'active'
         },
         include: {
@@ -183,9 +195,9 @@ export const createAIChatService = (prisma: PrismaClient) => {
       return {
         course: {
           id: course.id,
-          code: course.code,
-          name: course.name,
-          description: `${course.name} - ${course.unitLoad} units, Semester ${course.semester}`
+          code: course.courseCode,
+          name: course.title,
+          description: `${course.title} - ${course.creditUnit} units, Semester ${course.semester?.name || course.semesterId}`
         },
         chatSessions: sessions.map(session => ({
           id: session.id,
@@ -376,50 +388,91 @@ export const createAIChatService = (prisma: PrismaClient) => {
     // Course-related queries
     getCourseById: async (courseId: string) => {
       // Try by ID first for backward compatibility, then by code
-      let course = await prisma.course.findUnique({ where: { id: courseId } });
+      let course = await prisma.course.findUnique({
+        where: { id: courseId },
+        include: {
+          department: { select: { name: true } },
+          level: { select: { level: true } },
+          semester: { select: { name: true } },
+          versions: { orderBy: { revision: 'desc' }, take: 1 }
+        }
+      });
       if (!course) {
-        course = await prisma.course.findFirst({ where: { code: courseId } });
+        course = await prisma.course.findFirst({
+          where: { courseCode: courseId },
+          include: {
+            department: { select: { name: true } },
+            level: { select: { level: true } },
+            semester: { select: { name: true } },
+            versions: { orderBy: { revision: 'desc' }, take: 1 }
+          }
+        });
       }
       return course;
     },
 
     getCourseByCode: async (courseCode: string) => {
       return prisma.course.findFirst({
-        where: { code: courseCode }
+        where: { courseCode },
+        include: {
+          department: { select: { name: true } },
+          level: { select: { level: true } },
+          semester: { select: { name: true } },
+          versions: { orderBy: { revision: 'desc' }, take: 1 }
+        }
       });
     },
 
     // Enhanced course data retrieval with full details
     getCourseWithFullDetails: async (courseId: string) => {
-      const course = await prisma.course.findUnique({
-        where: { id: courseId }
+      let course: any = await prisma.course.findUnique({
+        where: { id: courseId },
+        include: {
+          department: { select: { name: true } },
+          level: { select: { level: true } },
+          semester: { select: { name: true } },
+          versions: { orderBy: { revision: 'desc' }, take: 1 }
+        }
       });
+      if (!course) {
+        course = await prisma.course.findFirst({
+          where: { courseCode: courseId },
+          include: {
+            department: { select: { name: true } },
+            level: { select: { level: true } },
+            semester: { select: { name: true } },
+            versions: { orderBy: { revision: 'desc' }, take: 1 }
+          }
+        });
+      }
 
       if (!course) return null;
 
+      const outline = course.versions?.[0]?.outline || [];
+
       return {
         id: course.id,
-        name: course.name,
-        code: course.code,
-        level: course.level,
-        coordinator: course.coordinator,
-        outline: course.outline || [],
-        unitLoad: course.unitLoad,
-        semester: course.semester,
-        department: course.department,
-        description: `${course.name} - ${course.unitLoad} units, Semester ${course.semester}`,
+        name: course.title,
+        code: course.courseCode,
+        level: course.level?.level || course.levelId,
+        coordinator: course.coordinator || null,
+        outline: outline,
+        unitLoad: course.creditUnit,
+        semester: course.semester?.name || course.semesterId,
+        department: course.department?.name || course.departmentId,
+        description: `${course.title} - ${course.creditUnit} units, Semester ${course.semester?.name || course.semesterId}`,
         assessment: [
           { type: "Assignments", percentage: 30 },
           { type: "Midterm Exam", percentage: 35 }, 
           { type: "Final Exam", percentage: 35 }
-        ] // Default assessment structure - can be made dynamic later
+        ]
       };
     },
 
     searchCoursesByCode: async (courseCode: string) => {
       return prisma.course.findMany({
         where: {
-          code: {
+          courseCode: {
             contains: courseCode,
             mode: 'insensitive'
           }
@@ -473,22 +526,37 @@ export const createAIChatService = (prisma: PrismaClient) => {
 
     // Course insights generation
     generateCourseInsights: async (courseId: string): Promise<CourseInsightsResponse> => {
-      const course = await prisma.course.findUnique({
-        where: { id: courseId }
+      let course: any = await prisma.course.findUnique({
+        where: { id: courseId },
+        include: {
+          level: true,
+          versions: { orderBy: { revision: 'desc' }, take: 1 }
+        }
       });
+      if (!course) {
+        course = await prisma.course.findFirst({
+          where: { courseCode: courseId },
+          include: {
+            level: true,
+            versions: { orderBy: { revision: 'desc' }, take: 1 }
+          }
+        });
+      }
 
       if (!course) {
         throw new Error('Course not found');
       }
 
+      const outline = course.versions?.[0]?.outline || [];
+
       // Generate insights based on course data
       return {
         studyPlan: [
-          `Week 1-2: Master ${course.outline[0] || 'foundational concepts'}`,
-          `Week 3-4: Practice ${course.outline[1] || 'intermediate topics'}`,
-          `Week 5-6: Dive into ${course.outline[2] || 'advanced concepts'}`
+          `Week 1-2: Master ${outline[0] || 'foundational concepts'}`,
+          `Week 3-4: Practice ${outline[1] || 'intermediate topics'}`,
+          `Week 5-6: Dive into ${outline[2] || 'advanced concepts'}`
         ],
-        keyTopics: course.outline || [
+        keyTopics: outline.length > 0 ? outline : [
           'Core Concepts',
           'Practical Applications',
           'Advanced Topics'
@@ -499,12 +567,12 @@ export const createAIChatService = (prisma: PrismaClient) => {
           'Practice problems daily for better understanding'
         ],
         resources: [
-          `${course.code}_textbook.pdf`,
-          `${course.code}_practice_problems.md`,
-          `${course.code}_video_tutorials.mp4`
+          `${course.courseCode}_textbook.pdf`,
+          `${course.courseCode}_practice_problems.md`,
+          `${course.courseCode}_video_tutorials.mp4`
         ],
-        difficultyRating: calculateDifficultyRating(course.level || '100'),
-        estimatedStudyHours: course.unitLoad * 2 // 2 hours per unit load
+        difficultyRating: calculateDifficultyRating(String(course.level?.level || course.levelId || '100')),
+        estimatedStudyHours: course.creditUnit * 2 // 2 hours per unit load
       };
     },
 
