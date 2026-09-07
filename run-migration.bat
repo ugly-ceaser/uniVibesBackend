@@ -1,0 +1,6 @@
+@echo off
+echo Running Prisma migration to add courseId to ChatSession...
+npx prisma migrate dev --name add_course_id_to_chat_session
+echo Generating Prisma client...
+npx prisma generate
+echo Migration completed!

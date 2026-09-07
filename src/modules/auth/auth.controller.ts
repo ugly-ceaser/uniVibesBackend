@@ -52,6 +52,17 @@ if (!prisma) {
     });
   }
 
+  // Convert verificationStatus from string to boolean if needed
+  let verificationStatusBoolean: boolean | null = null;
+  if (verificationStatus !== undefined && verificationStatus !== null) {
+    if (typeof verificationStatus === 'string') {
+      // Convert string values to boolean
+      verificationStatusBoolean = verificationStatus.toLowerCase() === 'true';
+    } else if (typeof verificationStatus === 'boolean') {
+      verificationStatusBoolean = verificationStatus;
+    }
+  }
+
   const result = await service.register({
     email,
     username,
@@ -65,7 +76,7 @@ if (!prisma) {
     department,
     faculty,
     level,
-    verificationStatus,
+    verificationStatus: verificationStatusBoolean,
   });
 
   return res.status(201).json(result);

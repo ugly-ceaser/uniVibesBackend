@@ -1,8 +1,54 @@
 import request from 'supertest';
 import { app, container } from '../../app';
+import { asValue } from 'awilix';
 
 describe('Auth integration', () => {
   jest.setTimeout(30000);
+
+  const usersMap = new Map<string, any>();
+
+  const mockPrisma: any = {
+    user: {
+      findUnique: jest.fn(async ({ where }: any) => {
+        if (where.id) return usersMap.get(where.id) || null;
+        if (where.email) {
+          for (const u of usersMap.values()) {
+            if (u.email === where.email) return u;
+          }
+        }
+        if (where.username) {
+          for (const u of usersMap.values()) {
+            if (u.username === where.username) return u;
+          }
+        }
+        return null;
+      }),
+      create: jest.fn(async ({ data }: any) => {
+        const id = `user_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+        const user = {
+          id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          ...data,
+        };
+        usersMap.set(id, user);
+        return user;
+      }),
+      update: jest.fn(async ({ where, data }: any) => {
+        const user = usersMap.get(where.id);
+        if (!user) throw new Error('User not found');
+        const updated = { ...user, ...data, updatedAt: new Date() };
+        usersMap.set(where.id, updated);
+        return updated;
+      })
+    }
+  };
+
+  beforeAll(() => {
+    container.register({
+      prisma: asValue(mockPrisma)
+    });
+  });
 
   it('register then login', async () => {
     const timestamp = Date.now();

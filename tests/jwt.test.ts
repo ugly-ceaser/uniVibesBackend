@@ -6,11 +6,11 @@ jest.mock('../src/config/env', () => ({
 }));
 
 describe('session token lifetime', () => {
-  it('issues a verifiable token that expires after seven days', () => {
+  it('issues a verifiable token that expires after 180 days (6 months)', () => {
     const token = signJwt({ userId: 'student-1' });
     const payload = verifyJwt(token);
     expect(payload.userId).toBe('student-1');
-    expect(payload.exp - payload.iat).toBe(7 * 24 * 60 * 60);
+    expect(payload.exp - payload.iat).toBe(180 * 24 * 60 * 60);
   });
 
   it('rejects expired tokens', () => {

@@ -58,7 +58,7 @@ export const createAuthService = (prisma: PrismaClient) => {
           department: input.department || null,
           faculty: input.faculty || null,
           level: input.level || null,
-          verificationStatus: input.verificationStatus || null
+          verificationStatus: input.verificationStatus ?? false
         }
       });
 
