@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { signJwt, verifyJwt } from '../src/utils/jwt';
+import { signJwt, verifyJwt } from '../../utils/jwt';
 
-jest.mock('../src/config/env', () => ({
+jest.mock('../../config/env', () => ({
   env: { jwtSecret: 'test-only-session-signing-secret' },
 }));
 
