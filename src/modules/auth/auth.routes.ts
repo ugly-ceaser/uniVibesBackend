@@ -1,5 +1,7 @@
 import { Router } from 'express';
+import type { AwilixContainer } from 'awilix';
 import { register, login, checkUsername, forgotPassword, verifyResetOtp, resetPassword } from './auth.controller';
+import { createAuthRateLimiter } from '../../middlewares/rateLimiter';
 
 /**
  * @swagger
@@ -86,6 +88,30 @@ import { register, login, checkUsername, forgotPassword, verifyResetOtp, resetPa
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
+ *       429:
+ *         description: Too many login/register attempts from this IP (10 per 15 minutes, shared by both routes)
+ *         headers:
+ *           Retry-After:
+ *             description: Seconds until the limit resets
+ *             schema:
+ *               type: integer
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: integer
+ *                   example: 429
+ *                 message:
+ *                   type: string
+ *                   example: Too many attempts. Try again in 42 seconds.
+ *                 retryAfter:
+ *                   type: integer
+ *                   example: 42
+ *                 requestId:
+ *                   type: string
+ *                   example: req-123456
  *       500:
  *         description: Internal server error
  *         content:
@@ -149,6 +175,30 @@ import { register, login, checkUsername, forgotPassword, verifyResetOtp, resetPa
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
+ *       429:
+ *         description: Too many login/register attempts from this IP (10 per 15 minutes, shared by both routes)
+ *         headers:
+ *           Retry-After:
+ *             description: Seconds until the limit resets
+ *             schema:
+ *               type: integer
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: integer
+ *                   example: 429
+ *                 message:
+ *                   type: string
+ *                   example: Too many attempts. Try again in 42 seconds.
+ *                 retryAfter:
+ *                   type: integer
+ *                   example: 42
+ *                 requestId:
+ *                   type: string
+ *                   example: req-123456
  *       500:
  *         description: Internal server error
  *         content:
@@ -157,10 +207,12 @@ import { register, login, checkUsername, forgotPassword, verifyResetOtp, resetPa
  *               $ref: '#/components/schemas/Error'
  */
 
-export const createAuthRouter = () => {
+export const createAuthRouter = (container: AwilixContainer) => {
   const router = Router();
-  router.post('/register', register);
-  router.post('/login', login);
+  // One limiter instance shared by login and register: one counter per IP for both.
+  const authLimiter = createAuthRateLimiter(container);
+  router.post('/register', authLimiter, register);
+  router.post('/login', authLimiter, login);
   router.post('/check-username', checkUsername);
   router.post('/forgot-password', forgotPassword);
   router.post('/verify-reset-otp', verifyResetOtp);

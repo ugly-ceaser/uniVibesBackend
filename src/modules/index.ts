@@ -16,7 +16,7 @@ import { proxyToRagBackend } from '../middlewares/ragProxy';
 export const registerRoutes = (app: Application, container: AwilixContainer) => {
   const api = Router();
   api.use('/ai', proxyToRagBackend);
-  api.use('/auth', createAuthRouter());
+  api.use('/auth', createAuthRouter(container));
   api.use('/courses', createCoursesRouter(container));
   api.use('/map', createMapRouter(container));
   api.use('/forum', createForumRouter(container));
