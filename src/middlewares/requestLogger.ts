@@ -19,4 +19,15 @@ const stream = {
   }
 };
 
-export const requestLogger = morgan(':req-id :method :url :status :res[content-length] - :response-time ms', { stream }); 
+export const requestLogger = morgan(':req-id :method :url :status :res[content-length] - :response-time ms', { stream });
+
+/**
+ * Diagnostic line for choosing TRUST_PROXY (enabled by LOG_CLIENT_IP=true).
+ * The raw X-Forwarded-For is logged because req.ips only lists the trusted hops.
+ */
+export const clientIpLogger = (req: Request, _res: Response, next: NextFunction) => {
+  logger.info(
+    `client-ip requestId=${(req as any).id ?? '-'} ip=${req.ip} ips=${req.ips.join(',') || '-'} xff="${req.headers['x-forwarded-for'] ?? ''}"`
+  );
+  next();
+};

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import dotenv from 'dotenv';
+import { parseTrustProxy } from './trustProxy';
 
 // Load env variables
 dotenv.config();
@@ -25,6 +26,17 @@ const envSchema = z.object({
   AI_SERVICE_URL: z.string().default('https://api.openai.com/v1'),
   AI_SERVICE_API_KEY: z.string().optional().default(''),
   AI_CACHE_TIMEOUT_MS: z.coerce.number().default(1800000),
+  // Express 'trust proxy': a hop count or a list of proxy IPs/CIDRs. Off by default; never `true`.
+  TRUST_PROXY: z.string().optional().transform((val, ctx) => {
+    try {
+      return parseTrustProxy(val);
+    } catch (err) {
+      ctx.addIssue({ code: 'custom', message: err instanceof Error ? err.message : String(err) });
+      return z.NEVER;
+    }
+  }),
+  // Diagnostic: log req.ip / req.ips / raw X-Forwarded-For per request. Switch on briefly only.
+  LOG_CLIENT_IP: z.preprocess((val) => val === 'true', z.boolean().default(false)),
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -41,6 +53,9 @@ if (validatedEnv.NODE_ENV === 'production') {
   if (validatedEnv.JWT_SECRET === 'change_me') {
     console.error('❌ CRITICAL SECURITY ERROR: JWT_SECRET cannot be "change_me" in production mode.');
     process.exit(1);
+  }
+  if (validatedEnv.TRUST_PROXY === false) {
+    console.warn('⚠️ TRUST_PROXY is not set: behind a proxy every client shares one rate-limit budget. See README "Running behind a proxy (Render)".');
   }
 }
 
@@ -59,4 +74,6 @@ export const env = {
   aiServiceUrl: validatedEnv.AI_SERVICE_URL,
   aiServiceApiKey: validatedEnv.AI_SERVICE_API_KEY,
   aiCacheTimeoutMs: validatedEnv.AI_CACHE_TIMEOUT_MS,
+  trustProxy: validatedEnv.TRUST_PROXY,
+  logClientIp: validatedEnv.LOG_CLIENT_IP,
 }; 

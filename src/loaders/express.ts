@@ -4,15 +4,18 @@ import helmet from 'helmet';
 import { scopePerRequest } from 'awilix-express';
 import type { AwilixContainer } from 'awilix';
 import { createRateLimiter } from '../middlewares/rateLimiter';
-import { requestId, requestLogger } from '../middlewares/requestLogger';
+import { clientIpLogger, requestId, requestLogger } from '../middlewares/requestLogger';
 import { errorHandler, notFoundHandler } from '../middlewares/errorHandler';
 import { attachUserIfPresent } from '../middlewares/authMiddleware';
 import { conditionalResponseLogger } from '../middlewares/responseLogger';
 import { registerRoutes } from '../modules';
 import { swaggerSpec, swaggerUi, swaggerUiOptions } from '../config/swagger';
+import { env } from '../config/env';
 
 export const createExpressApp = (container: AwilixContainer) => {
   const app = express();
+  // Must come before any middleware that reads req.ip (rate limiters, loggers).
+  app.set('trust proxy', env.trustProxy);
 
   app.disable('x-powered-by');
   app.use(helmet());
@@ -20,6 +23,7 @@ export const createExpressApp = (container: AwilixContainer) => {
   app.use(express.json({ limit: '1mb' }));
   app.use(requestId);
   app.use(requestLogger);
+  if (env.logClientIp) app.use(clientIpLogger); // diagnostic, see README "Running behind a proxy (Render)"
   app.use(conditionalResponseLogger); // 📤 Log all responses in development
   app.use(createRateLimiter(container));
   app.use(scopePerRequest(container));
