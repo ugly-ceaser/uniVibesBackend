@@ -1,22 +1,23 @@
 import fs from 'fs';
 import path from 'path';
-import { parseTrustProxy } from '../../config/trustProxy';
+import { MAX_TRUST_PROXY_HOPS, parseTrustProxy } from '../../config/trustProxy';
 
 describe('parseTrustProxy (AC-1)', () => {
-  it.each([undefined, '', '  ', '0', 'false', 'FALSE'])('returns false for %p', (raw) => {
+  it.each([undefined, '', '  ', '0', '00', 'false', 'FALSE'])('returns false for %p', (raw) => {
     expect(parseTrustProxy(raw)).toBe(false);
   });
 
   it('returns a hop count for digits', () => {
     expect(parseTrustProxy('1')).toBe(1);
     expect(parseTrustProxy(' 2 ')).toBe(2);
+    expect(parseTrustProxy(String(MAX_TRUST_PROXY_HOPS))).toBe(MAX_TRUST_PROXY_HOPS);
   });
 
   it('returns a normalised list of IPs/CIDRs and named ranges', () => {
     expect(parseTrustProxy('10.0.0.0/8, 127.0.0.1')).toBe('10.0.0.0/8,127.0.0.1');
     expect(parseTrustProxy('loopback')).toBe('loopback');
     expect(parseTrustProxy('linklocal, uniquelocal')).toBe('linklocal,uniquelocal');
-    expect(parseTrustProxy('::1, fd00::/8, 10.0.0.0/32, ::/0')).toBe('::1,fd00::/8,10.0.0.0/32,::/0');
+    expect(parseTrustProxy('::1, fd00::/8, 10.0.0.0/32, 10.0.0.0/1')).toBe('::1,fd00::/8,10.0.0.0/32,10.0.0.0/1');
   });
 
   it.each([
@@ -33,6 +34,11 @@ describe('parseTrustProxy (AC-1)', () => {
     '10.0.0.0/',
     '10.0.0.0/-1',
     '10.0.0.0/255.0.0.0',
+    '11',
+    '1000',
+    '0.0.0.0/0',
+    '::/0',
+    '10.0.0.1, 0.0.0.0/0',
   ])('throws an Error naming TRUST_PROXY for %p', (raw) => {
     expect(() => parseTrustProxy(raw)).toThrow(Error);
     expect(() => parseTrustProxy(raw)).toThrow(/TRUST_PROXY/);
@@ -40,6 +46,14 @@ describe('parseTrustProxy (AC-1)', () => {
 
   it('explains why true is not allowed', () => {
     expect(() => parseTrustProxy('true')).toThrow(/not allowed/);
+  });
+
+  it.each(['0.0.0.0/0', '::/0', '10.0.0.1,::/0'])('rejects the trust-everyone range %p like true', (raw) => {
+    expect(() => parseTrustProxy(raw)).toThrow(/not allowed/);
+  });
+
+  it('rejects hop counts above the cap and says why', () => {
+    expect(() => parseTrustProxy(String(MAX_TRUST_PROXY_HOPS + 1))).toThrow(/at most 10/);
   });
 });
 

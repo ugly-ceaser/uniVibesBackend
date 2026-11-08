@@ -133,6 +133,7 @@ describe('TRUST_PROXY', () => {
     it('logs one client-ip line with ip, ips and raw xff when LOG_CLIENT_IP=true', async () => {
       setEnv({ TRUST_PROXY: '1', LOG_CLIENT_IP: 'true' });
       const { app, infoSpy } = loadApp();
+      const stdoutSpy = jest.spyOn(console, 'log');
 
       const res = await request(app).get('/health').set('X-Forwarded-For', xff);
       expect(res.status).toBe(200);
@@ -142,16 +143,36 @@ describe('TRUST_PROXY', () => {
       expect(lines[0]).toContain('ip=203.0.113.1');
       expect(lines[0]).toContain('ips=203.0.113.1');
       expect(lines[0]).toContain(`xff="${xff}"`);
+
+      // Also on stdout: in production winston only writes to files, Render only shows stdout.
+      expect(clientIpLines(stdoutSpy)).toEqual(lines);
+    });
+
+    it('truncates a long X-Forwarded-For and escapes quotes', async () => {
+      setEnv({ TRUST_PROXY: '1', LOG_CLIENT_IP: 'true' });
+      const { app, infoSpy } = loadApp();
+
+      const longXff = `"evil" ${'1'.repeat(2000)}, 203.0.113.1`;
+      const res = await request(app).get('/health').set('X-Forwarded-For', longXff);
+      expect(res.status).toBe(200);
+
+      const lines = clientIpLines(infoSpy);
+      expect(lines).toHaveLength(1);
+      expect(lines[0]).toContain('xff="\\"evil\\" 111');
+      expect(lines[0]).toContain('...(truncated)"');
+      expect(lines[0].length).toBeLessThan(800);
     });
 
     it('logs no client-ip line when LOG_CLIENT_IP is unset', async () => {
       setEnv({ TRUST_PROXY: '1', LOG_CLIENT_IP: '' });
       const { app, infoSpy } = loadApp();
+      const stdoutSpy = jest.spyOn(console, 'log');
 
       const res = await request(app).get('/health').set('X-Forwarded-For', xff);
       expect(res.status).toBe(200);
 
       expect(clientIpLines(infoSpy)).toHaveLength(0);
+      expect(clientIpLines(stdoutSpy)).toHaveLength(0);
     });
   });
 });
