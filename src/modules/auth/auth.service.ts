@@ -1,8 +1,8 @@
-import { Prisma } from '@prisma/client';
 import bcrypt from "bcryptjs";
 import { signJwt } from "../../utils/jwt";
 import { RegisterInput, LoginInput } from "./auth.model";
 import { PrismaClient, Role } from '@prisma/client';
+import { ApiError } from '../../middlewares/errorHandler';
 
 
 const normalizeRole = (role?: string): Role => {
@@ -11,7 +11,7 @@ const normalizeRole = (role?: string): Role => {
   const upper = role.toUpperCase();
 
   if (upper === 'ADMIN') {
-    throw new Error('Administrator registration is not allowed through public signup');
+    throw new ApiError(400, 'Administrator registration is not allowed through public signup');
   }
 
   if (upper === 'GUEST' || upper === 'STUDENT') {
@@ -28,7 +28,7 @@ export const createAuthService = (prisma: PrismaClient) => {
         where: { email: input.email }
       });
       if (existing) {
-        throw new Error("Email already registered");
+        throw new ApiError(409, "Email already registered");
       }
 
       // Check if username exists
@@ -36,7 +36,7 @@ export const createAuthService = (prisma: PrismaClient) => {
         where: { username: input.username }
       });
       if (existingUsername) {
-        throw new Error("Username already taken");
+        throw new ApiError(409, "Username already taken");
       }
 
       // Hash password
@@ -95,11 +95,11 @@ export const createAuthService = (prisma: PrismaClient) => {
       const user = await prisma.user.findUnique({
         where: { email: input.email }
       });
-      if (!user) throw new Error("Invalid credentials");
+      if (!user) throw new ApiError(401, "Invalid credentials");
 
       // Verify password
       const validPassword = await bcrypt.compare(input.password, user.password);
-      if (!validPassword) throw new Error("Invalid credentials");
+      if (!validPassword) throw new ApiError(401, "Invalid credentials");
 
       // Generate token
       const token = signJwt({ 
